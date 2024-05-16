@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Video Data Collection Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Video Data Collection Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>About Us</h2>
+            <p>Learn more about our mission to provide comprehensive data solutions through video collection and analysis. Our team is dedicated to advancing research with high-quality data.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Video Data Collection Portal. All rights reserved.</p>
+    </footer>
+    <script>
+        function adjustMainPadding() {
+            var headerHeight = document.querySelector('header').offsetHeight;
+            var footerHeight = document.querySelector('footer').offsetHeight;
+            var mainElement = document.querySelector('main');
+
+            mainElement.style.paddingTop = headerHeight + 'px';
+            mainElement.style.paddingBottom = footerHeight + 'px';
+        }
+
+        // Adjust padding on load and window resize
+        window.onload = adjustMainPadding;
+        window.onresize = adjustMainPadding;
+    </script>
+</body>
+</html>
