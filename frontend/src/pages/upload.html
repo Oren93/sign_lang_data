@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Video Data Collection Portal</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Upload Your Videos</title>
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
     <header>
@@ -19,10 +19,13 @@
     </header>
     <main>
         <section>
-            <h2>Contact Us</h2>
-            <p>For more information or inquiries about our services, please contact us using the details below or fill out our contact form.</p>
-            <p>Email: contact@videodataportal.com</p>
-            <p>Phone: +123 456 7890</p>
+            <h2>Upload Your Video Files</h2>
+            <p>Please upload your video files using the form below. Make sure your videos meet our submission guidelines.</p>
+            <form action="/submit-video" method="post" enctype="multipart/form-data">
+                <label for="videoFile">Select video file to upload:</label>
+                <input type="file" id="videoFile" name="videoFile" accept="video/*">
+                <button type="submit">Upload Video</button>
+            </form>
         </section>
     </main>
     <footer>
