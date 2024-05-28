@@ -24,15 +24,15 @@ all:
 
 # ------------- Bash --------------
 # Go into ui container
-ui_sh:
-	docker exec -it sign_ui sh
+ui_bash:
+	docker exec -it sign_ui bash
 
 # Go into backend container
-back_sh:
+back_bash:
 	docker exec -it sign_backend bash
 
 # Go into database container
-db_sh:
+db_bash:
 	docker exec -it sign_db bash -c "psql -d \$${POSTGRES_DB} -U \$${POSTGRES_USER}"
 
 # ------------- Logs --------------
