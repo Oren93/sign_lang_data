@@ -4,10 +4,10 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  text-align: center;
 }
 
-#video-container,
-#recorded-video-container {
+#video-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,8 +25,18 @@
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
+  gap: 10px; /* Adjust the gap between buttons if needed */
+  margin-top: 10px;
 }
 
 button {
   margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #cccccc; /* Grey background for disabled state */
+  cursor: not-allowed;
 }
