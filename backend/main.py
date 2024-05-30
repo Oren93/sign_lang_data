@@ -2,8 +2,6 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from endpoints import videos, vocabulary
 
-import psycopg2
-
 app = FastAPI()
 
 origins = [

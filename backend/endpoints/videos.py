@@ -16,7 +16,6 @@ if not os.path.exists(UPLOAD_DIR):
 async def upload_video(video: UploadFile = File(...)):
     # Save the uploaded video with its original filename
     file_path = os.path.join(os.getcwd(), UPLOAD_DIR, video.filename)
-    print(file_path)
     with open(file_path, "wb") as buffer:
         buffer.write(video.file.read())
 
@@ -27,7 +26,6 @@ async def upload_video(video: UploadFile = File(...)):
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = int(cap.get(cv2.CAP_PROP_FPS))
-    print(width,height,fps)
 
     # Define the codec and create VideoWriter object
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')

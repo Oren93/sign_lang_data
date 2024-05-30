@@ -25,7 +25,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
-  gap: 10px; /* Adjust the gap between buttons if needed */
+  gap: 10px;
   margin-top: 10px;
 }
 
@@ -37,6 +37,6 @@ button {
 }
 
 button:disabled {
-  background-color: #cccccc; /* Grey background for disabled state */
+  background-color: #cccccc;
   cursor: not-allowed;
 }
