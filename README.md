@@ -33,7 +33,7 @@ We then discussed possible features we would like to have on our website:
 
 **Frontend**
 
-- **UI whit good UX:**
+- **UI with good UX:**
   - **Instant recording** - Hassle free, minimal clicks to start recording, countdown after press strart.
   - **Preview** - Possibility to play the recorded video before submitting.
   - **Smooth transition** - Allow instantly to move to the next gloss after submitting.

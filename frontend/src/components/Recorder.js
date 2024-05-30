@@ -113,6 +113,9 @@ const Recorder = () => {
   };
 
   const handleSkip = () => {
+    setRecordedBlob(null);
+    videoRef.current.src = "";
+
     wordIndex.current = (wordIndex.current + 1) % wordsArray.length;
     setCurrentWord(wordsArray[wordIndex.current]);
 
