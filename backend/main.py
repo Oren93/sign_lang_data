@@ -1,25 +1,21 @@
-from fastapi import FastAPI
-import psycopg2
+from fastapi import FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
+from endpoints import videos, vocabulary
 
 app = FastAPI()
-# PostgreSQL connection details
-DB_NAME = "sign_metadata"
-DB_USER = "admin"
-DB_PASSWORD = "test"
-DB_HOST = "database"
 
-# Connect to PostgreSQL
-conn = psycopg2.connect(
-    dbname=DB_NAME, user=DB_USER,
-    password=DB_PASSWORD, host=DB_HOST
+origins = [
+    "sign_ui",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
 )
-cursor = conn.cursor()
 
-@app.get("/words")
-async def get_words():
-    try:
-        cursor.execute("SELECT word FROM words_table")
-        words = [row[0] for row in cursor.fetchall()]
-        return words
-    except Exception as e:
-        return {"error": str(e)}
+app.include_router(vocabulary.router)
+app.include_router(videos.router)
+
