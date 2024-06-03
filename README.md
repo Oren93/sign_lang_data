@@ -27,6 +27,7 @@ We then discussed possible features we would like to have on our website:
   - **Badges** - Gamified experience, to encourage users to contribute.
 - **Vocabulary** - Build a dictionary of possible glosses, prioritize by popularity.
 - **Video Storing** - Explore the best approach for storing the videos.
+- **Uploading glosses** - Give the user the ability to upload a .csv file of glosses. Any new glosses in the file would then be added to the database.
 
 **Frontend**
 
