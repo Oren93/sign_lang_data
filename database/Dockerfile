@@ -2,7 +2,7 @@
 FROM postgres:latest
 
 # Set environment variables
-ENV POSTGRES_DB=sign_metadata
+ENV POSTGRES_DB=sign_db
 ENV POSTGRES_USER=admin
 ENV POSTGRES_PASSWORD=test
 

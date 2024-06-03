@@ -1,5 +1,4 @@
-from fastapi import File, UploadFile
-from fastapi import APIRouter
+from fastapi import File, UploadFile, APIRouter
 import cv2
 import os
 
