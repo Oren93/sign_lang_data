@@ -24,7 +24,9 @@ We then discussed possible features we would like to have on our website:
   - **Profiles** - Age, language, region, deaf or not, and other factors that may influence the language.
   - **Glosses** - List of glosses (words/patterns) that we would like to record, ideally ordered by popularity.
   - **Recordings** - Metadata about the recorded videos.
-  - **Badges** - Gamified experience, to encourage users to contribute.
+  - **Score** - Counting how many videos a user has uploaded and how many videos they have rated (two separate scores on their profile).
+  - **Leaderboard** - Showing activity with respect to the scores above (need to check if this is something people want to see though).
+  - **Badges** (low priority) - Gamified experience, to encourage users to contribute.
 - **Vocabulary** - Build a dictionary of possible glosses, prioritize by popularity.
 - **Video Storing** - Explore the best approach for storing the videos.
 - **Uploading glosses** - Give the user the ability to upload a .csv file of glosses. Any new glosses in the file would then be added to the database.
