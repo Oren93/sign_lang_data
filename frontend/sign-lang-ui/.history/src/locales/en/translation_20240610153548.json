@@ -1,0 +1,49 @@
+{   
+    "title": "Thank You!",
+    "appreciation": "We appreciate your participation in this project.",
+    "contribution": "Your contributions are invaluable to us.",
+    "smile": "😊",
+
+    
+    "permission_required": "Camera permissions are required to proceed.",
+    "grant_permission": "Grant Camera Permission",
+    "permission_granted": "Camera permissions granted. Click \"Activate Camera\" to start the camera.",
+    "activate_camera": "Activate Camera",
+    "start_recording": "Start Recording",
+    "stop_recording": "Stop Recording",
+    "leave_recording": "Leave Recording",
+    "next_word": "Next Word",
+    "repeat_word": "Repeat Word",
+
+    
+    "preparation_warning": "Prepare for Recording",
+    "read_prerequisites": "Please read the following prerequisites before starting your recording session:", 
+    "pre_req1": "Ensure you are in a well-lit environment.",
+    "pre_req2": "Position the camera so that your hands and face are clearly visible.",
+    "pre_req3": "Make sure there are no background noise.",
+    "pre_req4": "Familiarize yourself with the words you will be signing.",
+    "start": "Let's Start!!",
+
+
+    "welcome_message": "Welcome to our Video Data Collection Portal",
+    "portal_description": "This portal is designed to facilitate the collection of video data for research and training purposes.",
+    "navigation_prompt": "Please navigate through the website to contribute or access our resources.",
+    "contribute_data": "Contribute Data",
+    "contribute_instruction": "If you have video data that you would like to contribute to our repository, please follow the instructions below:",
+    "guideline_compliance": "Ensure your data complies with our submission guidelines.",
+    "upload_files": "Upload your files using the form provided.",
+    "go_to_upload": "Go to Upload Page",
+    "access_data": "Access Data",
+    "access_instruction": "If you are looking to access data from our repository for your research, please follow the steps below:",
+    "browse_data": "Browse Available Data",
+
+    "about_us": "About Us",
+    "goal_description": "Learn more about our mission to provide comprehensive data solutions through video collection and analysis. Our team is dedicated to advancing research with high-quality data.",
+    
+
+    "contact_us": "Contact Us",
+    "info_message": "For more information or inquiries about our services, please contact us using the details below or fill out our contact form.",
+    "email_info": "Email: contact@videodataportal.com", 
+    "phone_info": "Phone: +123 456 7890"
+  }
+  

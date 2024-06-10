@@ -2,10 +2,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
-import styles from './Record.module.css'; // Import the CSS module
 import { useTranslation } from 'react-i18next';
+import styles from './Record.module.css';
 
-const words = ['hello', 'world', 'sign', 'language', 'video', 'record']; // Example words
+const words = ['hello', 'world', 'sign', 'language', 'video', 'record'];
 
 const Record: React.FC = () => {
   const { t } = useTranslation();
@@ -35,7 +35,7 @@ const Record: React.FC = () => {
       stream.getTracks().forEach(track => track.stop()); // Stop all tracks to release the camera
     } catch (error) {
       setPermissionDenied(true);
-      alert('Camera permissions are required to proceed.');
+      alert(t('grant_permission'));
     }
   };
 
@@ -46,12 +46,12 @@ const Record: React.FC = () => {
 
   const handleActivateCamera = async () => {
     try {
-      // const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
       setCameraEnabled(true);
       setPermissionDenied(false);
     } catch (error) {
       setPermissionDenied(true);
-      alert('Camera permissions are required to proceed.');
+      alert(t('grant_permission'));
     }
   };
 
@@ -115,13 +115,13 @@ const Record: React.FC = () => {
       <div className={styles.overlay}>
         {permissionDenied && !permissionsGranted && (
           <div className={styles.confirmation}>
-            <p className={styles.permissionMessage}>{t('permission_required')}</p>
+            <p className={styles.permissionMessage}>{t('grant_permission')}</p>
             <button className={styles.startButton} onClick={requestCameraPermission}>{t('grant_permission')}</button>
           </div>
         )}
         {permissionsGranted && !cameraEnabled && !videoUrl && (
           <div className={styles.confirmation}>
-            <p className={styles.permissionMessage}>{t('permission_granted')}</p>
+            <p className={styles.permissionMessage}>{t('activate_camera')}</p>
             <button className={styles.startButton} onClick={handleActivateCamera}>{t('activate_camera')}</button>
           </div>
         )}
@@ -141,7 +141,7 @@ const Record: React.FC = () => {
         )}
         {videoUrl && (
           <div className={styles.videoContainer}>
-            <h3>Recorded Video:</h3>
+            <h3>{t('recorded_video')}</h3>
             <video className={styles.video} src={videoUrl} controls autoPlay />
             <div className={styles.buttonContainer}>
               <button className={styles.nextButton} onClick={handleNextWord}>{t('next_word')}</button>

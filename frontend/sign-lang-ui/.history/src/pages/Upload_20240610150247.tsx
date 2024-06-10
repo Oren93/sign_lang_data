@@ -2,10 +2,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Upload.module.css'; // Import the CSS module
-import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 const Upload: React.FC = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleStartRecording = () => {
@@ -23,7 +22,7 @@ const Upload: React.FC = () => {
           <li>{t('pre_req3')}</li>
           <li>{t('pre_req4')}</li>
         </ul>
-        <button className={styles.button} onClick={handleStartRecording}>{t('start')}</button>
+        <button className={styles.button} onClick={handleStartRecording}>Let's Start!!</button>
       </section>
     </main>
   );

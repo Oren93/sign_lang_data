@@ -23,7 +23,7 @@ const Upload: React.FC = () => {
           <li>{t('pre_req3')}</li>
           <li>{t('pre_req4')}</li>
         </ul>
-        <button className={styles.button} onClick={handleStartRecording}>{t('start')}</button>
+        <button className={styles.button} onClick={handleStartRecording}>Let's Start!!</button>
       </section>
     </main>
   );

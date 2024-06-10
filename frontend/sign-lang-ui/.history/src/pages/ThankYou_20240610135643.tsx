@@ -1,11 +1,10 @@
 import React, { CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 
-
 const ThankYou: React.FC = () => {
   const { t } = useTranslation();
 
-  const containerStyle: CSSProperties = {
+  const containerStyle = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -15,7 +14,7 @@ const ThankYou: React.FC = () => {
     color: '#333',
   };
 
-  const messageBoxStyle: CSSProperties = {
+  const messageBoxStyle = {
     textAlign: 'center',
     padding: '20px',
     border: '2px solid #ccc',
@@ -24,17 +23,17 @@ const ThankYou: React.FC = () => {
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   };
 
-  const h1Style: CSSProperties = {
+  const h1Style = {
     marginBottom: '20px',
     color: '#007bff',
   };
 
-  const pStyle: CSSProperties = {
+  const pStyle = {
     marginBottom: '10px',
     fontSize: '18px',
   };
 
-  const smileStyle: CSSProperties = {
+  const smileStyle = {
     fontSize: '50px',
     marginTop: '20px',
   };

@@ -43,9 +43,9 @@ const ThankYou: React.FC = () => {
     <div style={containerStyle}>
       <div style={messageBoxStyle}>
         <h1 style={h1Style}>{t('title')}</h1>
-        <p style={pStyle}>{t('appreciation')}</p>
-        <p style={pStyle}>{t('contribution')}</p>
-        <div style={smileStyle}>{t('smile')}</div>
+        <p style={pStyle}>We appreciate your participation in this project.</p>
+        <p style={pStyle}>Your contributions are invaluable to us.</p>
+        <div style={smileStyle}>😊</div>
       </div>
     </div>
   );

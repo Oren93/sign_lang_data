@@ -3,12 +3,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
 import styles from './Record.module.css'; // Import the CSS module
-import { useTranslation } from 'react-i18next';
 
 const words = ['hello', 'world', 'sign', 'language', 'video', 'record']; // Example words
 
 const Record: React.FC = () => {
-  const { t } = useTranslation();
   const [word, setWord] = useState<string>('');
   const [recording, setRecording] = useState<boolean>(false);
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
@@ -115,14 +113,14 @@ const Record: React.FC = () => {
       <div className={styles.overlay}>
         {permissionDenied && !permissionsGranted && (
           <div className={styles.confirmation}>
-            <p className={styles.permissionMessage}>{t('permission_required')}</p>
-            <button className={styles.startButton} onClick={requestCameraPermission}>{t('grant_permission')}</button>
+            <p className={styles.permissionMessage}>Camera permissions are required to proceed.</p>
+            <button className={styles.startButton} onClick={requestCameraPermission}>Grant Camera Permission</button>
           </div>
         )}
         {permissionsGranted && !cameraEnabled && !videoUrl && (
           <div className={styles.confirmation}>
-            <p className={styles.permissionMessage}>{t('permission_granted')}</p>
-            <button className={styles.startButton} onClick={handleActivateCamera}>{t('activate_camera')}</button>
+            <p className={styles.permissionMessage}>Camera permissions granted. Click "Activate Camera" to start the camera.</p>
+            <button className={styles.startButton} onClick={handleActivateCamera}>Activate Camera</button>
           </div>
         )}
         {cameraEnabled && !videoUrl && (
@@ -131,11 +129,11 @@ const Record: React.FC = () => {
             <Webcam className={styles.webcam} audio={false} ref={webcamRef} />
             <div className={styles.buttonContainer}>
               {recording ? (
-                <button className={styles.stopButton} onClick={handleStopRecording}>{t('stop_recording')}</button>
+                <button className={styles.stopButton} onClick={handleStopRecording}>Stop Recording</button>
               ) : (
-                <button className={styles.startButton} onClick={handleStartRecording}>{t('start_recording')}</button>
+                <button className={styles.startButton} onClick={handleStartRecording}>Start Recording</button>
               )}
-              <button className={styles.leaveButton} onClick={handleLeaveRecording}>{t('leave_recording')}</button>
+              <button className={styles.leaveButton} onClick={handleLeaveRecording}>Leave Recording</button>
             </div>
           </>
         )}
@@ -144,9 +142,9 @@ const Record: React.FC = () => {
             <h3>Recorded Video:</h3>
             <video className={styles.video} src={videoUrl} controls autoPlay />
             <div className={styles.buttonContainer}>
-              <button className={styles.nextButton} onClick={handleNextWord}>{t('next_word')}</button>
-              <button className={styles.repeatButton} onClick={handleRepeatWord}>{t('repeat_word')}</button>
-              <button className={styles.leaveButton} onClick={handleLeaveRecording}>{t('leave_recording')}</button>
+              <button className={styles.nextButton} onClick={handleNextWord}>Next Word</button>
+              <button className={styles.repeatButton} onClick={handleRepeatWord}>Repeat Word</button>
+              <button className={styles.leaveButton} onClick={handleLeaveRecording}>Leave Recording</button>
             </div>
           </div>
         )}

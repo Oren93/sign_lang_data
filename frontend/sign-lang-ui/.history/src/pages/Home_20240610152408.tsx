@@ -1,12 +1,9 @@
 // src/pages/Home.tsx
-import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
-
-  const { t } = useTranslation();
-
   return (
     <main>
       <section>

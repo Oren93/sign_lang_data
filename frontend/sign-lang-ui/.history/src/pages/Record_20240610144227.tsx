@@ -121,8 +121,8 @@ const Record: React.FC = () => {
         )}
         {permissionsGranted && !cameraEnabled && !videoUrl && (
           <div className={styles.confirmation}>
-            <p className={styles.permissionMessage}>{t('permission_granted')}</p>
-            <button className={styles.startButton} onClick={handleActivateCamera}>{t('activate_camera')}</button>
+            <p className={styles.permissionMessage}>Camera permissions granted. Click "Activate Camera" to start the camera.</p>
+            <button className={styles.startButton} onClick={handleActivateCamera}>Activate Camera</button>
           </div>
         )}
         {cameraEnabled && !videoUrl && (
@@ -131,11 +131,11 @@ const Record: React.FC = () => {
             <Webcam className={styles.webcam} audio={false} ref={webcamRef} />
             <div className={styles.buttonContainer}>
               {recording ? (
-                <button className={styles.stopButton} onClick={handleStopRecording}>{t('stop_recording')}</button>
+                <button className={styles.stopButton} onClick={handleStopRecording}>Stop Recording</button>
               ) : (
-                <button className={styles.startButton} onClick={handleStartRecording}>{t('start_recording')}</button>
+                <button className={styles.startButton} onClick={handleStartRecording}>Start Recording</button>
               )}
-              <button className={styles.leaveButton} onClick={handleLeaveRecording}>{t('leave_recording')}</button>
+              <button className={styles.leaveButton} onClick={handleLeaveRecording}>Leave Recording</button>
             </div>
           </>
         )}
@@ -144,9 +144,9 @@ const Record: React.FC = () => {
             <h3>Recorded Video:</h3>
             <video className={styles.video} src={videoUrl} controls autoPlay />
             <div className={styles.buttonContainer}>
-              <button className={styles.nextButton} onClick={handleNextWord}>{t('next_word')}</button>
-              <button className={styles.repeatButton} onClick={handleRepeatWord}>{t('repeat_word')}</button>
-              <button className={styles.leaveButton} onClick={handleLeaveRecording}>{t('leave_recording')}</button>
+              <button className={styles.nextButton} onClick={handleNextWord}>Next Word</button>
+              <button className={styles.repeatButton} onClick={handleRepeatWord}>Repeat Word</button>
+              <button className={styles.leaveButton} onClick={handleLeaveRecording}>Leave Recording</button>
             </div>
           </div>
         )}

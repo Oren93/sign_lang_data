@@ -3,7 +3,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Contact: React.FC = () => {
-  const { t } = useTranslation();
   return (
     <main>
       <section>
