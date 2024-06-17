@@ -1,13 +1,123 @@
-body {
+/* src/index.css */
+
+/* General body styles */
+html, body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  background: #f4f4f4;
+  color: #333;
+  height: 100vh;
+  overflow: auto;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Header styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f5dc;
+  color: #333;
+  padding: 10px 20px;
+  z-index: 1000;
+  text-align: center;
 }
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #5C4033;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+/* Main section styles */
+main {
+  position: relative;
+  overflow-y: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #fff; /* Ensures background color for readability */
+  transition: padding-top 0.3s ease, padding-bottom 0.3s ease; /* Smooth transitions for padding adjustments */
+  padding-top: 0; /* Initially set to 0 */
+  padding-bottom: 0; /* Initially set to 0 */
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+/* Footer styles */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f5dc;
+  color: #333;
+  padding: 10px 20px;
+  z-index: 1000;
+  text-align: center;
+  box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+}
+/* Link hover effect */
+nav ul li a:hover {
+  color: #8B4513;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+      text-align: center;
+  }
+
+  nav ul li {
+      display: block;
+      margin-bottom: 10px;
+  }
+
+  main {
+      margin: 10px;
+  }
+}
+
+/* Form styles */
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="file"] {
+  margin-bottom: 20px;
+}
+
+button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #555;
+}
+
