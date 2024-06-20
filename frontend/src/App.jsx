@@ -6,14 +6,14 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./styles/App.css";
-import Header from "./components/Header";
+import Header from "./components/Header.jsx";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Recorder from "./components/Recorder";
-import Login from "./components/Login";
-import Signup from "./components/Register";
+import Home from "./pages/Home.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
+import Recorder from "./components/Recorder.jsx";
+import Login from "./components/Login.jsx";
+import Signup from "./components/Register.jsx";
 import { UserContext } from "./context/UserContext";
 
 const App = () => {
