@@ -40,5 +40,14 @@ services:
     volumes:
       - sign_db_data:/var/lib/postgresql/data
 
+  flyway:
+    image: flyway/flyway
+    container_name: flyway_migrations
+    command: -url=jdbc:postgresql://database:5432/sign_metadata -user=admin -password=test -locations=filesystem:/flyway/sql migrate
+    volumes:
+      - ./database/migrations:/flyway/sql
+    depends_on:
+      - database
+
 volumes:
   sign_db_data:

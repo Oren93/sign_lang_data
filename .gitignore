@@ -2,4 +2,7 @@ frontend/node_modules/*
 !frontend/node_modules/react-scripts/config/webpack.config.js
 **/__pycache__/*
 **/.DS_Store
+scripts/config/webpack.config.js
+**/.DS_Store
+**/__pycache__/
 backend/uploaded_videos/

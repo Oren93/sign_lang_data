@@ -92,9 +92,7 @@ const Recorder = () => {
         method: "POST",
         body: formData,
       });
-      if (response.ok) {
-        console.log("Video uploaded successfully!");
-      } else {
+      if (!response.ok) {
         console.error("Failed to upload video:", response.statusText);
       }
     } catch (error) {
@@ -113,6 +111,9 @@ const Recorder = () => {
   };
 
   const handleSkip = () => {
+    setRecordedBlob(null);
+    videoRef.current.src = "";
+
     wordIndex.current = (wordIndex.current + 1) % wordsArray.length;
     setCurrentWord(wordsArray[wordIndex.current]);
 

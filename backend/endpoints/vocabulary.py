@@ -1,35 +1,25 @@
-from fastapi import APIRouter
-import psycopg2
-
-# PostgreSQL connection details
-DB_NAME = "sign_db"
-DB_USER = "admin"
-DB_PASSWORD = "test"
-DB_HOST = "database"
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
+from src.database.database import SessionLocal
+from src.database.models import Gloss
 
 router = APIRouter()
 
-def get_db_connection():
-    connection = psycopg2.connect(
-        dbname=DB_NAME,
-        user=DB_USER,
-        password=DB_PASSWORD,
-        host=DB_HOST
-    )
-    return connection
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 @router.get("/words")
-async def get_words():
+async def get_words(db: Session = Depends(get_db)):
     """
     Send a list of words to frontend
     """
     try:
-        connection = get_db_connection()
-        cursor = connection.cursor()
-        cursor.execute("SELECT gloss FROM glosses")
-        words = [row[0] for row in cursor.fetchall()]
-        cursor.close()
-        connection.close()
-        return {"words": words}
+        words = db.query(Gloss.gloss).all()
+        word_list = [word.gloss for word in words]
+        return {"words": word_list}
     except Exception as e:
-        return {"error": str(e)}
+        raise HTTPException(status_code=500, detail=str(e))

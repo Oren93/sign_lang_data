@@ -34,11 +34,11 @@ const RecorderContent = ({
         <button
           id="submitButton"
           onClick={handleSubmit}
-          disabled={!recordedBlob}
+          disabled={!recordedBlob | recording}
         >
           Submit
         </button>
-        <button id="skipButton" onClick={handleSkip}>
+        <button id="skipButton" onClick={handleSkip} disabled={recording}>
           Skip
         </button>
       </div>
