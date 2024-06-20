@@ -14,9 +14,7 @@ const Signup = () => {
       body: JSON.stringify({ username, password }),
     });
 
-    if (response.ok) {
-      console.log("Signup successful");
-    } else {
+    if (!response.ok) {
       console.error("Signup failed");
     }
   };

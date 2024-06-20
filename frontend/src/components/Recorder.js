@@ -92,9 +92,7 @@ const Recorder = () => {
         method: "POST",
         body: formData,
       });
-      if (response.ok) {
-        console.log("Video uploaded successfully!");
-      } else {
+      if (!response.ok) {
         console.error("Failed to upload video:", response.statusText);
       }
     } catch (error) {

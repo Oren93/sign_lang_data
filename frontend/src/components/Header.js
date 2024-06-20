@@ -1,27 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import "../styles/Header.css";
+import { UserContext } from "../context/UserContext";
 
-const Header = () => {
+const Header = ({ handleLogout }) => {
+  const { user } = useContext(UserContext);
+
   return (
     <header className="header">
       <h1>Sign Language Video Recorder</h1>
       <nav>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/about">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
-          <li>
-            <a href="/signup">sign up</a>
-          </li>
-          <li>
-            <a href="/login">login</a>
-          </li>
+          {user ? (
+            <>
+              <li>Welcome, {user.username}</li>
+              <li>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/signup">Sign Up</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>

@@ -6,7 +6,7 @@ const Login = ({ handleLogin }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch("http://localhost:8001/auth/login", {
+    const response = await fetch("http://localhost:8001/auth/token", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,10 +1,9 @@
-import React from "react";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Redirect,
+  Navigate,
 } from "react-router-dom";
 import "./styles/App.css";
 import Header from "./components/Header";
@@ -15,42 +14,32 @@ import Contact from "./pages/Contact";
 import Recorder from "./components/Recorder";
 import Login from "./components/Login";
 import Signup from "./components/Register";
+import { UserContext } from "./context/UserContext";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [token, setToken] = useState(null);
-
-  const handleLogin = (token) => {
-    setIsAuthenticated(true);
-    setToken(token);
-  };
+  const { user, setToken, setUser } = useContext(UserContext);
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
     setToken(null);
+    setUser(null);
+    localStorage.removeItem("signLangRecToken");
   };
 
   return (
     <Router>
       <div className="App">
-        <Header isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
+        <Header isAuthenticated={user} handleLogout={handleLogout} />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/record" element={<Recorder />} />
-            <Route path="/login" element={<Login />}>
-              <Login handleLogin={handleLogin} />
-            </Route>
+            <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/record">
-              {isAuthenticated ? (
-                <Recorder token={token} />
-              ) : (
-                <Redirect to="/login" />
-              )}
-            </Route>
+            <Route
+              path="/record"
+              element={user ? <Recorder /> : <Navigate to="/login" />}
+            />
           </Routes>
         </main>
         <Footer />
