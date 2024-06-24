@@ -6,3 +6,5 @@ scripts/config/webpack.config.js
 **/.DS_Store
 **/__pycache__/
 backend/uploaded_videos/
+**/.history/*
+
