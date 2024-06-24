@@ -1,0 +1,17 @@
+{
+    "login": {
+      "title": "Innskráning",
+      "usernameLabel": "Notandanafn:",
+      "passwordLabel": "Lykilorð:",
+      "submitButton": "Innskrá",
+      "loginFailed": "Innskráning mistókst"
+    },
+    "signup": {
+      "title": "Nýskráning",
+      "usernameLabel": "Notandanafn:",
+      "passwordLabel": "Lykilorð:",
+      "submitButton": "Nýskrá",
+      "signupFailed": "Nýskráning mistókst"
+    }
+  }
+  

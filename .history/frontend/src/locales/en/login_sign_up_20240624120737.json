@@ -1,0 +1,17 @@
+{
+    "login": {
+      "title": "Login",
+      "usernameLabel": "Username:",
+      "passwordLabel": "Password:",
+      "submitButton": "Login",
+      "loginFailed": "Login failed"
+    },
+    "signup": {
+      "title": "Signup",
+      "usernameLabel": "Username:",
+      "passwordLabel": "Password:",
+      "submitButton": "Signup",
+      "signupFailed": "Signup failed"
+    }
+  }
+  

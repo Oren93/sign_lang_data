@@ -1,0 +1,7 @@
+**/.history/
+frontend/node_modules/
+
+**/__pycache__
+
+backend/upload_videos/
+

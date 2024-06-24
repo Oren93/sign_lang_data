@@ -1,0 +1,13 @@
+{
+    "welcome_message": "Velkomin á myndbandsöflunargátt okkar",
+    "portal_description": "Þessi gátt er hönnuð til að auðvelda söfnun myndefnis til rannsókna og þjálfunar.",
+    "navigation_prompt": "Vinsamlegast siglaðu í gegnum vefsíðuna til að leggja fram eða fá aðgang að úrræðum okkar.",
+    "contribute_data": "Leggja fram gögn",
+    "contribute_instruction": "Ef þú hefur myndefni sem þú vilt leggja fram í gagnasafn okkar, vinsamlegast fylgdu leiðbeiningunum hér að neðan:",
+    "guideline_compliance": "Gakktu úr skugga um að gögnin þín uppfylli innsendingarreglur okkar.",
+    "upload_files": "Hladdu upp skrám þínum með því að nota formið sem er til staðar.",
+    "go_to_upload": "Fara á upphleðslusíðu",
+    "access_data": "Fá aðgang að gögnum",
+    "access_instruction": "Ef þú ert að leita að því að fá aðgang að gögnum úr gagnasafninu okkar fyrir rannsóknir þínar, vinsamlegast fylgdu skrefunum hér að neðan:",
+    "browse_data": "Skoða tiltæk gögn"
+}

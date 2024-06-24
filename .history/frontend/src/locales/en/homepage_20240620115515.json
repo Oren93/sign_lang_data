@@ -1,0 +1,13 @@
+{
+    "welcome_message": "Welcome to our Video Data Collection Portal",
+    "portal_description": "This portal is designed to facilitate the collection of video data for research and training purposes.",
+    "navigation_prompt": "Please navigate through the website to contribute or access our resources.",
+    "contribute_data": "Contribute Data",
+    "contribute_instruction": "If you have video data that you would like to contribute to our repository, please follow the instructions below:",
+    "guideline_compliance": "Ensure your data complies with our submission guidelines.",
+    "upload_files": "Upload your files using the form provided.",
+    "go_to_upload": "Go to Upload Page",
+    "access_data": "Access Data",
+    "access_instruction": "If you are looking to access data from our repository for your research, please follow the steps below:",
+    "browse_data": "Browse Available Data"
+}
