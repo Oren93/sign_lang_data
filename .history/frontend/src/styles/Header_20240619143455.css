@@ -24,21 +24,3 @@
     text-decoration: underline;
   }
   
-
-.language-switcher {
-  display: inline-block;
-  margin-left: 1em;
-}
-
-
-.language-switcher button {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  margin: 0 0.5em;
-}
-
-.language-switcher button:hover {
-  text-decoration: underline;
-}

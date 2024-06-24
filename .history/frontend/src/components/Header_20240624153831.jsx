@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../styles/Header.css";
 import { UserContext } from "../context/UserContext";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "./LanguageSwitch";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = ({ handleLogout }) => {
   const { t } = useTranslation('common');
