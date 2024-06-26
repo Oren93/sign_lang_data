@@ -2,13 +2,12 @@
 FROM node:21
 
 # Create and define the node_modules's cache directory.
-WORKDIR /cache
+WORKDIR /app
 
 # install app dependencies
 COPY package*.json ./
 RUN npm install 
 
-WORKDIR /app
 ENV NODE_OPTIONS --openssl-legacy-provider
 ENV PATH /app/node_modules/.bin:$PATH
 COPY . .
