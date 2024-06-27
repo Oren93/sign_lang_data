@@ -4,6 +4,12 @@ from sqlalchemy.sql import func
 
 Base = declarative_base()
 
+class Migration(Base):
+    __tablename__ = "migrations"
+    id = Column(Integer, primary_key=True, index=True)
+    filename = Column(String, unique=True, nullable=False)
+    applied_at = Column(DateTime(timezone=True), server_default=func.now())
+
 class User(Base):
     __tablename__ = "users"
 
