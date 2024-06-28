@@ -1,13 +1,14 @@
-# Use an official PostgreSQL image
 FROM postgres:latest
 
-# Set environment variables
 ENV POSTGRES_DB=sign_db
 ENV POSTGRES_USER=admin
 ENV POSTGRES_PASSWORD=test
 
-# Add the alias to the .bashrc file
-RUN echo "alias db='psql -d $POSTGRES_DB -U $POSTGRES_USER'" >> /root/.bashrc
+COPY pg_hba.conf /etc/postgresql/pg_hba.conf
 
-# Expose PostgreSQL port
-EXPOSE 5432
+# Add a custom entrypoint script
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+CMD ["postgres"]

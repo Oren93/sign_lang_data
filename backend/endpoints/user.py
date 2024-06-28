@@ -41,5 +41,4 @@ async def generate_token(
 
 @router.get("/current", response_model = User)
 async def get_user(user: User = Depends(auth.get_current_user)):
-    print('foo')
     return user

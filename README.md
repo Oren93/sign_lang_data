@@ -51,4 +51,16 @@ Oren is working on authentication. Joao was away, but is now going to work on gl
 
 Oren is away next week and Joao is back then. We aim for a demo meeting in two weeks.
 
-# Next Meeting -> 2 pm monday the 10th
+### 25/06/2024
+
+We discussed the data model. We need to add models for videos and a table that connects a video to a user and a gloss. We might also want to consider having a rating table, but that would be something extra.
+
+The user registration and authentication is working, but needs a bit of polishing. Oren mentioned that he needs to figure out which user is sending a request in the backend when the user is logged in.
+
+Video uploading works, but the video is not associated with a user yet.
+
+The scraping is still ongoing.
+
+We discussed how to prioritize the glosses and we decided it might be reasonable to give users the ability to mark a gloss as important, meaning it should be prioritized.
+
+We also discussed the project complexity. Currently, it is organized as three containers and we discussed simplifying to be a single container. We further discussed the possibility of serving templates through fastapi instead of having a separate react front-end.
