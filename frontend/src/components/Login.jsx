@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import ErrorMessage from "./ErrorMessage";
 import { UserContext } from "../context/UserContext";
 
 const Login = () => {
+  const { t } = useTranslation('login_sign_up');
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -42,13 +44,13 @@ const Login = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <h1>{t("login.title")}</h1>
         <div>
-          <label>Email Address</label>
+          <label>{t("login.emailLabel")}</label>
           <div>
             <input
               type="email"
-              placeholder="Enter email"
+              placeholder={t("login.emailPlaceholder")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -56,11 +58,11 @@ const Login = () => {
           </div>
         </div>
         <div>
-          <label>Password</label>
+          <label>{t("login.passwordLabel")}</label>
           <div>
             <input
               type="password"
-              placeholder="Enter password"
+              placeholder={t("login.passwordPlaceholder")}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -69,7 +71,7 @@ const Login = () => {
         </div>
         <ErrorMessage message={errorMessage} />
         <br />
-        <button type="submit">Login</button>
+        <button type="submit">{t("login.submitButton")}</button>
       </form>
     </div>
   );

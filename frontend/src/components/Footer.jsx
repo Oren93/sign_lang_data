@@ -1,10 +1,14 @@
 import React from "react";
 import "../styles/Footer.css";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+
+  const { t } = useTranslation('common');
+  
   return (
     <footer className="footer">
-      <p>&copy; 2024 Sign Language Video Recorder. All rights reserved.</p>
+      <p>{t('footer.rights')}</p>
     </footer>
   );
 };

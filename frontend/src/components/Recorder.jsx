@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "../styles/Recorder.css";
 import RecorderContent from "../components/RecorderContent";
 
@@ -10,6 +11,8 @@ const Recorder = () => {
   const videoRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const wordIndex = useRef(0);
+
+  const { t } = useTranslation('record_page');
 
   useEffect(() => {
     fetchWords();
@@ -38,7 +41,7 @@ const Recorder = () => {
 
   const renderWords = () => (
     <div>
-      <h3>Word to Sign</h3>
+      <h3>{t('gloss_to_sign')}</h3>
       <ul>
         <li>{currentWord}</li>
       </ul>

@@ -1,0 +1,17 @@
+{
+    "header": { 
+        "website_name": "Video Data Collection Portal",
+        "home_button": "Home",
+        "about_button": "About",
+        "contact_button": "Contacts",
+        "welcome_message": "Welcome, ",
+        "sign_up_button": "Sign Up",
+        "login_button": "Login",
+        "logout_button": "Logout"
+    },
+
+    "footer": {
+        "rights": "@2024 Video Data Collection Portal. All rights reserved."
+    }
+}
+

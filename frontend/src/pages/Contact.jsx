@@ -1,15 +1,17 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
-const Contact = () => (
-  <div>
-    <h2>Contact Us</h2>
-    <p>
-      For more information or inquiries about our services, please contact us
-      using the details below or fill out our contact form.
-    </p>
-    <p>Email: contact@videodataportal.com</p>
-    <p>Phone: +123 456 7890</p>{" "}
-  </div>
-);
+const Contact = () => {
+  const { t } = useTranslation('contact');
+
+  return (
+    <div>
+      <h2>{t('contact_us')}</h2>
+      <p>{t('info_message')}</p>
+      <p>{t('email_info')}</p>
+      <p>{t('phone_info')}</p>
+    </div>
+  );
+};
 
 export default Contact;

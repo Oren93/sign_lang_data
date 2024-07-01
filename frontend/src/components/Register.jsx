@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-
+import { useTranslation } from "react-i18next";
 import { UserContext } from "../context/UserContext";
 import ErrorMessage from "./ErrorMessage";
 
 const Register = () => {
+  const { t } = useTranslation('login_sign_up');
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -41,7 +42,7 @@ const Register = () => {
       submitRegistration();
     } else {
       setErrorMessage(
-        "Ensure that the passwords match and greater than 5 characters"
+        t("register.errorMessage")
       );
     }
   };
@@ -49,13 +50,13 @@ const Register = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h1>Register</h1>
+        <h1>{t("register.title")}</h1>
         <div>
-          <label>Email Address</label>
+          <label>{t("register.emailLabel")}</label>
           <div>
             <input
               type="email"
-              placeholder="Enter email"
+              placeholder={t("register.emailPlaceholder")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -63,11 +64,11 @@ const Register = () => {
           </div>
         </div>
         <div>
-          <label>Username</label>
+          <label>{t("register.usernameLabel")}</label>
           <div>
             <input
               type="username"
-              placeholder="Choose a username"
+              placeholder={t("register.usernamePlaceholder")}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -75,11 +76,11 @@ const Register = () => {
           </div>
         </div>
         <div>
-          <label>Password</label>
+          <label>{t("register.passwordLabel")}</label>
           <div>
             <input
               type="password"
-              placeholder="Enter password"
+              placeholder={t("register.passwordPlaceholder")}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -87,11 +88,11 @@ const Register = () => {
           </div>
         </div>
         <div>
-          <label>Confirm Password</label>
+          <label>{t("register.confirmPasswordLabel")}</label>
           <div>
             <input
               type="password"
-              placeholder="Enter password"
+              placeholder={t("register.confirmPasswordPlaceholder")}
               value={confirmationPassword}
               onChange={(e) => setConfirmationPassword(e.target.value)}
               required
@@ -100,7 +101,7 @@ const Register = () => {
         </div>
         <ErrorMessage message={errorMessage} />
         <br />
-        <button type="submit">Register</button>
+        <button type="submit">{t("register.submitButton")}</button>
       </form>
     </div>
   );

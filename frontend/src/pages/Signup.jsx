@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Signup = () => {
+  const { t } = useTranslation('login_sign_up');
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,16 +17,16 @@ const Signup = () => {
     });
 
     if (!response.ok) {
-      console.error("Signup failed");
+      console.error(t("signup.signupFailed"));
     }
   };
 
   return (
     <div>
-      <h1>Signup</h1>
+      <h1>{t("signup.title")}</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Username:
+          {t("signup.usernameLabel")}
           <input
             type="text"
             value={username}
@@ -34,7 +36,7 @@ const Signup = () => {
         </label>
         <br />
         <label>
-          Password:
+          {t("signup.passwordLabel")}
           <input
             type="password"
             value={password}
@@ -43,7 +45,7 @@ const Signup = () => {
           />
         </label>
         <br />
-        <button type="submit">Signup</button>
+        <button type="submit">{t("signup.submitButton")}</button>
       </form>
     </div>
   );

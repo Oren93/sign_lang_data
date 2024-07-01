@@ -1,40 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-const Home = () => (
-  <div>
-    <section>
-      <h2>Welcome to our Video Data Collection Portal</h2>
-      <p>
-        This portal is designed to facilitate the collection of video data for
-        research and training purposes.
-      </p>
-      <p>
-        Please navigate through the website to contribute or access our
-        resources.
-      </p>
-    </section>
-    <section>
-      <h3>Contribute Data</h3>
-      <p>
-        If you have video data that you would like to contribute to our
-        repository, please follow the instructions below:
-      </p>
-      <ol>
-        <li>Ensure your data complies with our submission guidelines.</li>
-        <li>Upload your files using the form provided.</li>
-      </ol>
-      <Link to="/record">Go to Upload Page</Link>
-    </section>
-    <section>
-      <h3>Access Data</h3>
-      <p>
-        If you are looking to access data from our repository for your research,
-        please follow the steps below:
-      </p>
-      <Link to="/browse">Browse Available Data</Link>
-    </section>
-  </div>
-);
+const Home = () => {
+  const { t } = useTranslation('homepage');
+
+  return (
+    <div>
+      <section>
+        <h2>{t('welcome_message')}</h2>
+        <p>{t('portal_description')}</p>
+        <p>{t('navigation_prompt')}</p>
+      </section>
+      <section>
+        <h3>{t('contribute_data')}</h3>
+        <p>{t('contribute_instruction')}</p>
+        <ol>
+          <li>{t('guideline_compliance')}</li>
+          <li>{t('upload_files')}</li>
+        </ol>
+        <Link to="/record">{t('go_to_upload')}</Link>
+      </section>
+      <section>
+        <h3>{t('access_data')}</h3>
+        <p>{t('access_instruction')}</p>
+        <Link to="/browse">{t('browse_data')}</Link>
+      </section>
+    </div>
+  );
+};
 
 export default Home;

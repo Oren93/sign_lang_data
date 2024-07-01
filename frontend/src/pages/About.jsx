@@ -1,13 +1,15 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
-const About = () => (
-  <div>
-    <h2>About Us</h2>
-    <p>
-      This portal is designed to facilitate the collection of video data for
-      research and training purposes.
-    </p>
-  </div>
-);
+const About = () => {
+  const { t } = useTranslation("about");
+
+  return (
+    <div>
+      <h2>{t('about_us')}</h2>
+      <p>{t('goal_description')}</p>
+    </div>
+  );
+};
 
 export default About;
