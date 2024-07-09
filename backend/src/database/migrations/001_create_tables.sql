@@ -24,7 +24,7 @@ CREATE TABLE videos (
     frame_start INTEGER DEFAULT 0,
     frame_end INTEGER DEFAULT -1,
     bbox TEXT, -- Example "[385,37,885,720]"
-    uploaded_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- In case some videos represent more than 1 gloss, this table defines many-to-many

@@ -11,7 +11,7 @@ services:
     volumes:
       - ./frontend:/app
     command: >
-      bash -c "npm start"
+      bash -c "cp -rfu /cache/node_modules/. /app/node_modules/ && npm start"
 
   test:
     build:
@@ -23,11 +23,6 @@ services:
   backend:
     build: ./backend
     container_name: sign_backend
-    environment:
-      - DB_USER=admin
-      - DB_PASSWORD=test
-      - DB_HOST=database
-      - DB_NAME=sign_db
     ports:
       - "8001:8000"
     depends_on:
@@ -38,15 +33,10 @@ services:
   database:
     build: ./database
     container_name: sign_db
+    ports:
+      - "5432:5432"
     volumes:
       - sign_db_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: sign_db
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: test
-      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256"
-    command:
-      ["postgres", "-c", "log_connections=on", "-c", "log_disconnections=on"]
 
   flyway:
     image: flyway/flyway

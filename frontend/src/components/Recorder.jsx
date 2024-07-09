@@ -8,11 +8,12 @@ const Recorder = () => {
   const [recordedBlob, setRecordedBlob] = useState(null);
   const [currentWord, setCurrentWord] = useState("");
   const [wordsArray, setWordsArray] = useState([]);
+  const [protectedMessage, setProtectedMessage] = useState("");
   const videoRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const wordIndex = useRef(0);
 
-  const { t } = useTranslation('record_page');
+  const { t } = useTranslation("record_page");
 
   useEffect(() => {
     fetchWords();
@@ -20,7 +21,11 @@ const Recorder = () => {
 
   const fetchWords = async () => {
     try {
-      const response = await fetch("http://localhost:8001/words");
+      const response = await fetch("http://localhost:8001/words", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("signLangRecToken")}`,
+        },
+      });
       const data = await response.json();
       setWordsArray(data.words);
       setCurrentWord(data.words[0]);
@@ -41,7 +46,7 @@ const Recorder = () => {
 
   const renderWords = () => (
     <div>
-      <h3>{t('gloss_to_sign')}</h3>
+      <h3>{t("gloss_to_sign")}</h3>
       <ul>
         <li>{currentWord}</li>
       </ul>
@@ -87,55 +92,97 @@ const Recorder = () => {
       return;
     }
 
+    const token = localStorage.getItem("signLangRecToken");
+    if (!token) {
+      console.error("No token found");
+      setProtectedMessage(
+        "No authentication token found. Please log in again."
+      );
+      return;
+    }
+
     const formData = new FormData();
     formData.append("video", recordedBlob, "recorded_video.mp4");
 
     try {
       const response = await fetch("http://localhost:8001/submit", {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: formData,
       });
-      if (!response.ok) {
-        console.error("Failed to upload video:", response.statusText);
+
+      if (response.ok) {
+        const data = await response.json();
+        setProtectedMessage(
+          `Video submitted successfully. ID: ${data.id}, Filename: ${data.filename}`
+        );
+      } else {
+        const errorData = await response.json();
+        setProtectedMessage(
+          `Failed to submit video. Status: ${response.status}. Error: ${errorData.detail}`
+        );
       }
     } catch (error) {
-      console.error("Error uploading video:", error);
-    }
-
-    setRecordedBlob(null);
-    videoRef.current.src = "";
-
-    wordIndex.current = (wordIndex.current + 1) % wordsArray.length;
-    setCurrentWord(wordsArray[wordIndex.current]);
-
-    if (wordIndex.current === 0) {
-      fetchWords();
+      console.error("Error submitting video:", error);
+      setProtectedMessage(`Error submitting video: ${error.message}`);
     }
   };
 
   const handleSkip = () => {
-    setRecordedBlob(null);
-    videoRef.current.src = "";
+    if (wordIndex.current < wordsArray.length - 1) {
+      wordIndex.current += 1;
+      setCurrentWord(wordsArray[wordIndex.current]);
+    } else {
+      // Handle reaching the end of the words array
+      console.log("No more words to display");
+    }
+  };
 
-    wordIndex.current = (wordIndex.current + 1) % wordsArray.length;
-    setCurrentWord(wordsArray[wordIndex.current]);
+  const testProtectedRoute = async () => {
+    console.log(localStorage.getItem("signLangRecToken"));
+    try {
+      const response = await fetch("http://localhost:8001/protected", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("signLangRecToken")}`,
+        },
+      });
 
-    if (wordIndex.current === 0) {
-      fetchWords();
+      if (response.ok) {
+        const data = await response.json();
+        setProtectedMessage(
+          `Protected route access successful. Message: ${data.message}`
+        );
+      } else {
+        setProtectedMessage(
+          `Failed to access protected route. Status: ${response.status}`
+        );
+      }
+    } catch (error) {
+      console.error("Error accessing protected route:", error);
+      setProtectedMessage(`Error accessing protected route: ${error.message}`);
     }
   };
 
   return (
-    <RecorderContent
-      handleStartRecording={handleStartRecording}
-      recording={recording}
-      handleStopRecording={handleStopRecording}
-      renderWords={renderWords}
-      videoRef={videoRef}
-      handleSubmit={handleSubmit}
-      handleSkip={handleSkip}
-      recordedBlob={recordedBlob}
-    />
+    <div>
+      <RecorderContent
+        handleStartRecording={handleStartRecording}
+        recording={recording}
+        handleStopRecording={handleStopRecording}
+        renderWords={renderWords}
+        videoRef={videoRef}
+        handleSubmit={handleSubmit}
+        handleSkip={handleSkip}
+        recordedBlob={recordedBlob}
+      />
+      <div>
+        <button onClick={testProtectedRoute}>Test Protected Route</button>
+        {protectedMessage && <p>{protectedMessage}</p>}
+      </div>
+    </div>
   );
 };
 
