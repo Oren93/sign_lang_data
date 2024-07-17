@@ -64,3 +64,22 @@ The scraping is still ongoing.
 We discussed how to prioritize the glosses and we decided it might be reasonable to give users the ability to mark a gloss as important, meaning it should be prioritized.
 
 We also discussed the project complexity. Currently, it is organized as three containers and we discussed simplifying to be a single container. We further discussed the possibility of serving templates through fastapi instead of having a separate react front-end.
+
+### 17/07/2024
+
+- We changed the name conventions for the videos. In the future, we want to upload the videos automatically to Youtube.
+- We need to add the gloss to the video as well.
+- Tried moving to one docker container, caused problems so we have three containers.
+- Decided to keep on using React.
+- Work on video evaluation has started.
+- Migration system for database.
+
+Next steps:
+- Deploy the system (highest priority).
+- Finish video evaluation.
+- Consider how to upload videos to youtube (unlisted).
+
+Things that need to be done before the project ends:
+- Saving videos, who did what and what glosses are covered.
+- The UI must look better.
+- Should deploy the system (check Heroku) and get feedback from Árni.
