@@ -18,8 +18,8 @@ async def get_words(db: Session = Depends(get_db)):
     Send a list of words to frontend
     """
     try:
-        words = db.query(Gloss.gloss).all()
-        word_list = [word.gloss for word in words]
+        words = db.query(Gloss).all()
+        word_list = {word.id: word.gloss for word in words}
         return {"words": word_list}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

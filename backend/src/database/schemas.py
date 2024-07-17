@@ -8,7 +8,6 @@ class UserCreate(UserBase):
     password_salted: str
 
     class Config:
-        orm_mode = True
         from_attributes = True
 
 class User(UserBase):
@@ -16,5 +15,4 @@ class User(UserBase):
     username: str
 
     class Config:
-        orm_mode = True
         from_attributes = True

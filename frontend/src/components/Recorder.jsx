@@ -7,10 +7,12 @@ const Recorder = () => {
   const [recording, setRecording] = useState(false);
   const [recordedBlob, setRecordedBlob] = useState(null);
   const [currentWord, setCurrentWord] = useState("");
-  const [wordsArray, setWordsArray] = useState([]);
+  const [currentWordId, setCurrentWordId] = useState("");
+  const [wordsObject, setWordsObject] = useState({});
   const [protectedMessage, setProtectedMessage] = useState("");
   const videoRef = useRef(null);
   const mediaRecorderRef = useRef(null);
+  const wordIds = useRef([]);
   const wordIndex = useRef(0);
 
   const { t } = useTranslation("record_page");
@@ -18,6 +20,12 @@ const Recorder = () => {
   useEffect(() => {
     fetchWords();
   }, []);
+
+  useEffect(() => {
+    if (Object.keys(wordsObject).length > 0) {
+      initializeWord();
+    }
+  }, [wordsObject]);
 
   const fetchWords = async () => {
     try {
@@ -27,11 +35,36 @@ const Recorder = () => {
         },
       });
       const data = await response.json();
-      setWordsArray(data.words);
-      setCurrentWord(data.words[0]);
-      wordIndex.current = 0;
+      setWordsObject(data.words);
+      wordIds.current = Object.keys(data.words);
     } catch (error) {
       console.error("Error fetching words:", error);
+    }
+  };
+
+  const initializeWord = () => {
+    if (wordIds.current.length > 0) {
+      const firstId = wordIds.current[0];
+      setCurrentWordId(firstId);
+      setCurrentWord(wordsObject[firstId]);
+      wordIndex.current = 1; // Set to 1 as we've loaded the first word
+    } else {
+      console.log("No words available");
+      setCurrentWord("No words available");
+      setCurrentWordId("");
+    }
+  };
+
+  const loadNextWord = () => {
+    if (wordIndex.current < wordIds.current.length) {
+      const nextId = wordIds.current[wordIndex.current];
+      setCurrentWordId(nextId);
+      setCurrentWord(wordsObject[nextId]);
+      wordIndex.current += 1;
+    } else {
+      console.log("No more words to display");
+      setCurrentWord("");
+      setCurrentWordId("");
     }
   };
 
@@ -88,7 +121,7 @@ const Recorder = () => {
   };
 
   const handleSubmit = async () => {
-    if (!recordedBlob) {
+    if (!recordedBlob || !currentWordId) {
       return;
     }
 
@@ -103,6 +136,7 @@ const Recorder = () => {
 
     const formData = new FormData();
     formData.append("video", recordedBlob, "recorded_video.mp4");
+    formData.append("gloss_id", currentWordId);
 
     try {
       const response = await fetch("http://localhost:8001/submit", {
@@ -116,8 +150,14 @@ const Recorder = () => {
       if (response.ok) {
         const data = await response.json();
         setProtectedMessage(
-          `Video submitted successfully. ID: ${data.id}, Filename: ${data.filename}`
+          `Video submitted successfully. ID: ${data.id}, Filename: ${data.filename}, Gloss ID: ${data.gloss_id}`
         );
+        // Clear the recorded video
+        setRecordedBlob(null);
+        videoRef.current.src = "";
+        videoRef.current.controls = false;
+        // Load the next word
+        loadNextWord();
       } else {
         const errorData = await response.json();
         setProtectedMessage(
@@ -131,12 +171,12 @@ const Recorder = () => {
   };
 
   const handleSkip = () => {
-    if (wordIndex.current < wordsArray.length - 1) {
-      wordIndex.current += 1;
-      setCurrentWord(wordsArray[wordIndex.current]);
-    } else {
-      // Handle reaching the end of the words array
-      console.log("No more words to display");
+    loadNextWord();
+    // Clear the recorded video if any
+    setRecordedBlob(null);
+    if (videoRef.current) {
+      videoRef.current.src = "";
+      videoRef.current.controls = false;
     }
   };
 

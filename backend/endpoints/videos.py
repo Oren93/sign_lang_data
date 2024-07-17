@@ -1,9 +1,9 @@
-from fastapi import File, UploadFile, APIRouter, Depends, HTTPException
+from fastapi import File, UploadFile, APIRouter, Depends, HTTPException, Form
 import cv2
 import os
 from sqlalchemy.orm import Session
 from src.database.database import get_db
-from src.database.models import User, Video
+from src.database.models import User, Video, GlossVideo, Gloss
 from src.user.auth import get_current_user
 
 router = APIRouter()
@@ -17,14 +17,24 @@ if not os.path.exists(UPLOAD_DIR):
 @router.post("/submit")
 async def upload_video(
     video: UploadFile = File(...),
+    gloss_id: int = Form(...),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    gloss = db.query(Gloss).filter(Gloss.id == gloss_id).first()
+    if not gloss:
+        raise HTTPException(status_code=404, detail="Gloss not found")
+
     # Create a new Video entry in the database
     db_video = Video(signer=current_user.id)
     db.add(db_video)
     db.commit()
     db.refresh(db_video)
+
+    # Create a new GlossVideo entry to link the video with the gloss
+    db_gloss_video = GlossVideo(gloss_id=gloss_id, video_id=db_video.id)
+    db.add(db_gloss_video)
+    db.commit()
 
     # Use the database ID as the unique identifier
     unique_id = str(db_video.id)
@@ -66,10 +76,12 @@ async def upload_video(
 
     # Update the Video entry with the file path
     db_video.url = output_path
+    db_video.fps = fps
     db.commit()
 
     return {
         "id": db_video.id,
-        "filename": f"{unique_id}_transcoded.mp4",
-        "saved_path": output_path
+        "filename": f"{unique_id}.mp4",
+        "saved_path": output_path,
+        "gloss_id": gloss_id
     }
