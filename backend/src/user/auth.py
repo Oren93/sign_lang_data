@@ -1,7 +1,8 @@
 from fastapi import Depends, HTTPException, security
 import jwt
-from sqlalchemy import orm, exc  # Import exc for catching IntegrityError
+from sqlalchemy import orm
 from passlib.hash import bcrypt
+import logging
 
 from src.database import database
 from src.database import models 
@@ -59,6 +60,11 @@ async def create_token(user: models.User):
 
     return dict(access_token=token, token_type="bearer")
 
+async def create_token(user: models.User):
+    user_obj = schemas.User.from_orm(user)
+    token = jwt.encode(user_obj.dict(), JWT_SECRET)
+    return {"access_token": token, "token_type": "bearer"}
+
 async def get_current_user(
     db: orm.Session = Depends(get_db),
     token: str = Depends(oauth2schema),
@@ -66,9 +72,14 @@ async def get_current_user(
     try:
         payload = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
         user = db.query(models.User).get(payload["id"])
-    except:
-        raise HTTPException(
-            status_code=401, detail="Invalid Email or Password"
-        )
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token has expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+    except Exception as e:
+        logging.error(f"Error decoding token: {str(e)}")
+        raise HTTPException(status_code=401, detail="Could not validate credentials")
 
-    return schemas.User.from_orm(user)
+    if user is None:
+        raise HTTPException(status_code=401, detail="User not found")
+    return user
