@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from endpoints import videos, vocabulary, user
+from endpoints import videos, vocabulary, user, ratings
 from src.scheduler import start_scheduler
 from fastapi.security import OAuth2PasswordBearer
 from src.user import auth

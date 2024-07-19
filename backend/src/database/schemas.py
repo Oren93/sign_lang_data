@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, validator
 from typing import Optional
 from datetime import datetime
 
@@ -20,8 +20,14 @@ class User(UserBase):
         from_attributes = True
 
 class RatingBase(BaseModel):
-    rating: int
-    comment: Optional[str] = None
+    rating: int = Field(..., ge=0, le=10)  # Rating must be between 0 and 10
+    comment_text: Optional[str] = None
+
+    @validator('rating')
+    def rating_not_null(cls, v):
+        if v is None:
+            raise ValueError('Rating cannot be null')
+        return v
 
 class RatingCreate(RatingBase):
     video_id: int
@@ -30,7 +36,7 @@ class Rating(RatingBase):
     id: int
     user_id: int
     video_id: int
-    created_at: datetime
+    posted_on: datetime
 
     class Config:
         from_attributes = True
@@ -38,7 +44,7 @@ class Rating(RatingBase):
 class VideoWithRatings(BaseModel):
     id: int
     url: str
-    average_rating: float
+    average_rating: Optional[float] = None
     ratings_count: int
 
     class Config:
