@@ -28,5 +28,6 @@ async def protected_route(current_user: models.User = Depends(auth.get_current_u
 app.include_router(user.router, prefix="/user")
 app.include_router(vocabulary.router)
 app.include_router(videos.router)
+app.include_router(ratings.router, prefix="/ratings") 
 
 start_scheduler()
