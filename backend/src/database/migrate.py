@@ -8,6 +8,9 @@ from src.database.models import Base, Migration
 from sqlalchemy.exc import OperationalError
 from sqlalchemy import create_engine, inspect
 from src.database.database import SQLALCHEMY_DATABASE_URL
+from src.utils.logging import get_logger
+
+logger = get_logger()
 
 MIGRATIONS_PATH = os.path.join(os.getcwd(),"src","database","migrations")
 
@@ -25,6 +28,7 @@ def apply_single_migration(session: Session, filename: str):
         session.commit()
     except Exception as e:
         session.rollback()
+        logger.error(f"Error applying migration {filename}: {str(e)}")
 
 def ensure_migrations_table(engine):
     inspector = inspect(engine)
@@ -42,16 +46,23 @@ def apply_migrations():
         new_migrations = [f for f in all_migrations if f not in applied_migrations]
 
         for migration in new_migrations:
+            logger.info(f"Applying migration: {migration}")
             apply_single_migration(session, migration)
+            logger.info(f"Migration {migration} applied successfully.")
     finally:
         session.close()
 
-def migrate(max_retries=6, retry_delay=10):
+def migrate(max_retries=20, retry_delay=60):
     retries = 0
     while retries < max_retries:
         try:
             apply_migrations()
+            logger.info("Migration successful")
             return
         except OperationalError as e:
             retries += 1
+            logger.error(f"Database error occurred: {str(e)}")
+            logger.info(f"Retrying in {retry_delay} seconds... (Attempt {retries}/{max_retries})")
             time.sleep(retry_delay)
+
+    logger.error("Max retries reached. Migration failed.")
