@@ -49,6 +49,7 @@ class GlossVideo(Base):
         UniqueConstraint('gloss_id', 'video_id', name='unique_gloss_video'),
     )
 
+
 class VideoRating(Base):
     __tablename__ = "video_ratings"
     id = Column(Integer, primary_key=True, index=True)
@@ -59,3 +60,4 @@ class VideoRating(Base):
     posted_on = Column(DateTime(timezone=True), server_default=func.now())
     video = relationship("Video", back_populates="ratings")
     user = relationship("User")
+
