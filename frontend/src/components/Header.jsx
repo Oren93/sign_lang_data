@@ -26,6 +26,12 @@ const Header = ({ handleLogout }) => {
           {user ? (
             <>
               <li>
+                <Link to="/record">{t("header.record_button")}</Link>
+              </li>
+              <li>
+                <Link to="/rate">{t("header.rate_button")}</Link>
+              </li>
+              <li>
                 {t("header.welcome_message")}
                 {user.username}
               </li>

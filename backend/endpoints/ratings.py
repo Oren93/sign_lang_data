@@ -1,3 +1,4 @@
+import os
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import func
@@ -32,10 +33,17 @@ async def get_random_video(
         func.avg(VideoRating.rating).label('average_rating'),
         func.count(VideoRating.id).label('ratings_count')
     ).filter(VideoRating.video_id == random_video.id).first()
+
+    # Convert the local file path to a web-accessible URL
+    video_filename = os.path.basename(random_video.url)
+    video_url = f"/app/videos/{video_filename}"
+
+
+    
     
     return VideoWithRatings(
         id=random_video.id,
-        url=random_video.url,
+        url=video_url,
         average_rating=float(rating_stats.average_rating) if rating_stats.average_rating else None,
         ratings_count=rating_stats.ratings_count
     )
@@ -47,7 +55,7 @@ async def rate_video(
     current_user: User = Depends(get_current_user)
 ):
     try:
-        # This will raise a ValidationError if rating is outside 0-10 or null
+        # This will raise a ValidationError if rating is outside 0-5 or null
         rating_validated = RatingCreate(**rating.dict())
     except ValidationError as e:
         raise HTTPException(status_code=400, detail=str(e))

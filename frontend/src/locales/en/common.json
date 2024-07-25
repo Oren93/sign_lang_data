@@ -7,7 +7,9 @@
         "welcome_message": "Welcome, ",
         "sign_up_button": "Sign Up",
         "login_button": "Login",
-        "logout_button": "Logout"
+        "logout_button": "Logout",
+        "record_button": "Record",
+        "rate_button": "Rate Videos"
     },
 
     "footer": {

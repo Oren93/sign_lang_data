@@ -20,7 +20,7 @@ class User(UserBase):
         from_attributes = True
 
 class RatingBase(BaseModel):
-    rating: int = Field(..., ge=0, le=10)  # Rating must be between 0 and 10
+    rating: int = Field(..., ge=0, le=5)  # Rating must be between 0 and 10
     comment_text: Optional[str] = None
 
     @validator('rating')

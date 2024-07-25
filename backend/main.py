@@ -5,9 +5,13 @@ from src.scheduler import start_scheduler
 from fastapi.security import OAuth2PasswordBearer
 from src.user import auth
 from src.database import models
+from fastapi.staticfiles import StaticFiles
+import os
 
 app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+UPLOAD_DIR = "uploaded_videos"
 
 origins = [
     "sign_ui",
@@ -29,5 +33,7 @@ app.include_router(user.router, prefix="/user")
 app.include_router(vocabulary.router)
 app.include_router(videos.router)
 app.include_router(ratings.router, prefix="/ratings") 
+
+app.mount("/app/videos", StaticFiles(directory=UPLOAD_DIR), name="videos")
 
 start_scheduler()
