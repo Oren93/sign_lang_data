@@ -6,6 +6,8 @@ import pyperclip as pc
 def get_all_extensions(directory):
     extensions = set()
     for root, _, files in os.walk(directory):
+        if 'node_modules' in root.split(os.path.sep):
+            continue
         for filename in files:
             _, ext = os.path.splitext(filename)
             if ext:
@@ -17,6 +19,7 @@ def copy_source_files(directory, valid_extensions, valid_filenames):
     valid_filenames = list(valid_filenames)
     for i, ext in enumerate(valid_extensions):
         valid_extensions[i] = ext.replace(' ', '')
+
     if directory[:2] == "~/":
         directory = os.path.expanduser(directory)
     if directory[0] != "/":
@@ -38,7 +41,7 @@ def copy_source_files(directory, valid_extensions, valid_filenames):
 
     for root, dirs, files in os.walk(directory):
         # Check if the directory should be ignored
-        if any(ignored_dir in root for ignored_dir in ignore_dirs):
+        if any(ignored_dir in root for ignored_dir in ignore_dirs) or 'node_modules' in root.split(os.path.sep):
             continue
 
         for filename in files:
@@ -51,6 +54,7 @@ def copy_source_files(directory, valid_extensions, valid_filenames):
     print("Copied the following files:")
     for i in cpy.keys():
         print(i)
+
     pc.copy(json.dumps(cpy))
 
 def prompt_user_for_extensions_and_filenames(extensions):
@@ -60,10 +64,13 @@ def prompt_user_for_extensions_and_filenames(extensions):
             ext = ext.split('.')[1]
         if len(ext) >= 2 and len(ext) <= 5:
             print(ext)
+
     chosen_exts = input("Enter the file extensions to include, separated by commas (or leave blank to skip): ")
     chosen_files = input("Enter the filenames to include, separated by commas (or leave blank to skip): ")
+
     valid_extensions = {ext.strip() for ext in chosen_exts.split(',')} if chosen_exts else set()
     valid_filenames = {fname.strip() for fname in chosen_files.split(',')} if chosen_files else set()
+
     return valid_extensions, valid_filenames
 
 # Get the directory from the user

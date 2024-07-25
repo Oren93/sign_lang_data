@@ -7,7 +7,9 @@
         "welcome_message": "Velkominn, ",
         "sign_up_button": "Nýskrá",
         "login_button": "Innskrá",
-        "logout_button": "Útskrá"
+        "logout_button": "Útskrá",
+        "record_button": "Taktu upp", 
+        "rate_button": "Gefðu myndböndum einkunn"
     },
 
     "footer": {
