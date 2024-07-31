@@ -94,3 +94,8 @@ Things that need to be done before the project ends:
 - We talked about using DaisyUI for the front-end: https://daisyui.com/
 - Oren tried to do the Youtube integration, but it was not successful so far.
 - We also discussed adding an export functionality. We decided to add an export button (under the 'about' section of the page or another section called 'Data export'), which is accessible to logged in users. We will log what users have exported the data. We only export the youtube links, the gloss, and the signer ID. Possibly, we might want to export more information (rating?).
+
+### 31/07/2024
+
+- Oren had notified us he would be absent in the meeting.
+- We discussed three options for the interface. Joao had started working on one of them. Still some problems with Tailwind that he is working out.
