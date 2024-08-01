@@ -9,6 +9,7 @@ import enContact from "../locales/en/contact.json";
 import enHomepage from "../locales/en/homepage.json";
 import enRecordPage from "../locales/en/record_page.json";
 import enLoginSign from "../locales/en/login_sign_up.json";
+import enRating from "../locales/en/rating.json"; // New import
 
 // Importing Icelandic translations
 import isAbout from "../locales/is/about.json";
@@ -17,6 +18,7 @@ import isContact from "../locales/is/contact.json";
 import isHomepage from "../locales/is/homepage.json";
 import isRecordPage from "../locales/is/record_page.json";
 import isLoginSign from "../locales/is/login_sign_up.json";
+import isRating from "../locales/is/rating.json"; // New import
 
 const resources = {
   en: {
@@ -26,6 +28,7 @@ const resources = {
     homepage: enHomepage,
     record_page: enRecordPage,
     login_sign_up: enLoginSign,
+    rating: enRating, // New addition
   },
   is: {
     about: isAbout,
@@ -34,6 +37,7 @@ const resources = {
     homepage: isHomepage,
     record_page: isRecordPage,
     login_sign_up: isLoginSign,
+    rating: isRating, // New addition
   },
 };
 
@@ -54,6 +58,7 @@ i18n
       "homepage",
       "record_page",
       "login_sign_up",
+      "rating", // New addition
     ],
     defaultNS: "common",
   });

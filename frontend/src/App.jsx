@@ -14,6 +14,7 @@ import Contact from "./pages/Contact.jsx";
 import Recorder from "./components/Recorder.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Register.jsx";
+import VideoRating from "./components/VideoRating.jsx"; // Import the new component
 import { UserContext } from "./context/UserContext";
 
 const App = () => {
@@ -39,6 +40,10 @@ const App = () => {
             <Route
               path="/record"
               element={user ? <Recorder /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/rate"
+              element={user ? <VideoRating /> : <Navigate to="/login" />}
             />
           </Routes>
         </main>

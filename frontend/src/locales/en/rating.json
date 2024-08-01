@@ -1,0 +1,17 @@
+{
+    "rateVideo": "Rate this Video",
+    "commentPlaceholder": "Add your comment here...",
+    "submitRating": "Submit Rating",
+    "loading": "Loading video...",
+    "currentRating": "Current Rating",
+    "averageRating": "Average Rating",
+    "ratings": "ratings",
+    "outOf5": "out of 5",
+    "error": {
+      "fetchVideo": "Failed to fetch video. Please try again.",
+      "submitRating": "Failed to submit rating. Please try again."
+    },
+    "success": {
+      "ratingSubmitted": "Rating submitted successfully!"
+    }
+  }

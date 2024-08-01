@@ -1,0 +1,17 @@
+{
+    "rateVideo": "Gefðu þessu myndbandi einkunn",
+    "commentPlaceholder": "Bættu við athugasemd hér...",
+    "submitRating": "Senda einkunn",
+    "loading": "Hleð myndbandi...",
+    "currentRating": "Núverandi einkunn",
+    "averageRating": "Meðaleinkunn",
+    "ratings": "einkunnir",
+    "outOf5": "af 5",
+    "error": {
+      "fetchVideo": "Tókst ekki að sækja myndband. Vinsamlegast reyndu aftur.",
+      "submitRating": "Tókst ekki að senda einkunn. Vinsamlegast reyndu aftur."
+    },
+    "success": {
+      "ratingSubmitted": "Einkunn send!"
+    }
+  }
