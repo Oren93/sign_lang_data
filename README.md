@@ -99,3 +99,13 @@ Things that need to be done before the project ends:
 
 - Oren had notified us he would be absent in the meeting.
 - We discussed three options for the interface. Joao had started working on one of them. Still some problems with Tailwind that he is working out.
+
+### 09/08/2024
+
+- Joao implemented the interface we had agreed on.
+- The interface is fully working and he is considering some small changes.
+- Joao demoed the interface.
+- We discussed modifying the "Access Data" card to "Explore the Data".
+  - Under that route, we would have a list of all the glosses and mark which ones have a recording.
+  - When the user clicks on a gloss they can view the videos associated with that gloss and see more information about it (or at least the information we have).
+- Oren tried to deploy to Heroku and didn't have enough to make it work fully yet. He will continue working on that.
