@@ -1,35 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Star, Send, AlertCircle } from 'lucide-react';
 
-// Simple Alert component
-const Alert = ({ children, variant = 'default' }) => {
-  const bgColor = variant === 'default' ? 'bg-blue-100 text-blue-700' : 'bg-red-100 text-red-700';
-  return (
-    <div className={`p-4 mb-4 text-sm rounded-lg ${bgColor}`} role="alert">
-      {children}
-    </div>
-  );
-};
-
-// Custom Star component using SVG
 const CustomStar = ({ filled, hovered, onMouseEnter, onMouseLeave, onClick }) => {
   return (
-    <svg
-      className="cursor-pointer"
-      width="35"
-      height="35"
-      viewBox="0 0 24 24"
+    <Star
+      size={35}
       fill={filled ? "#FCD34D" : "none"}
       stroke={hovered ? "#FCD34D" : "#D1D5DB"}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      className="cursor-pointer transition-colors duration-200"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onClick}
-    >
-      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-    </svg>
+    />
   );
 };
 
@@ -42,7 +25,7 @@ const VideoRating = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState(null);
 
-  const API_BASE_URL = 'http://localhost:8001'; // Make this configurable
+  const API_BASE_URL = 'http://localhost:8001';
 
   useEffect(() => {
     fetchRandomVideo();
@@ -59,28 +42,17 @@ const VideoRating = () => {
     }
 
     try {
-      const url = `${API_BASE_URL}/ratings/random`;
-      console.log('Fetching from URL:', url);
-      
-      const response = await fetch(url, {
+      const response = await fetch(`${API_BASE_URL}/ratings/random`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      console.log('Response status:', response.status);
-      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
-
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Error response body:', errorText);
-        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
-      console.log('Fetched video data:', data);
-      
-      // Construct the full video URL
       const videoUrl = `${API_BASE_URL}${data.url}`;
       setVideo({ ...data, url: videoUrl });
     } catch (error) {
@@ -96,10 +68,7 @@ const VideoRating = () => {
     }
 
     try {
-      const url = `${API_BASE_URL}/ratings/rate`;
-      console.log('Submitting rating to URL:', url);
-
-      const response = await fetch(url, {
+      const response = await fetch(`${API_BASE_URL}/ratings/rate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,16 +81,9 @@ const VideoRating = () => {
         }),
       });
 
-      console.log('Rating submission response status:', response.status);
-
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Error response body:', errorText);
-        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      const data = await response.json();
-      console.log('Rating submission response:', data);
 
       setMessage(t('success.ratingSubmitted'));
       setRating(0);
@@ -146,55 +108,58 @@ const VideoRating = () => {
     );
   };
 
-  if (error) {
-    return <Alert variant="error">{error}</Alert>;
-  }
-
   return (
-    <div className="max-w-2xl mx-auto mt-8 p-4 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">{t('rateVideo')}</h2>
-      
-
-      {!video ? (
-        <div>{t('loading')}</div>
-      ) : (
-        <>
-          {video.url ? (
-            <video src={video.url} controls className="w-full mb-4">
-              Your browser does not support the video tag.
-            </video>
-          ) : (
-            <p>Error: No video URL available</p>
-          )}
-          <div className="mb-4 flex justify-center space-x-2">
-            {[1, 2, 3, 4, 5].map(renderStar)}
+    <div className="container mx-auto px-4 py-12">
+      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">{t('rateVideo')}</h2>
+        
+        {error && (
+          <div className="mb-4 p-4 bg-red-100 text-red-700 rounded-lg flex items-center">
+            <AlertCircle className="mr-2" />
+            {error}
           </div>
-          <p className="text-center mb-4">{t('currentRating')}: {rating}</p>
-          <textarea
-            className="w-full p-2 border rounded mb-4"
-            rows="3"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            placeholder={t('commentPlaceholder')}
-          />
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            onClick={handleRating}
-          >
-            {t('submitRating')}
-          </button>
-          {message && (
-            <Alert variant="default">
-              {message}
-            </Alert>
-          )}
-          {video.average_rating !== null && (
-            <p className="mt-4">
-              {t('averageRating')}: {video.average_rating.toFixed(1)} {t('outOf5')} ({video.ratings_count} {t('ratings')})
-            </p>
-          )}
-        </>
-      )}
+        )}
+
+        {!video ? (
+          <div className="text-center text-gray-600">{t('loading')}</div>
+        ) : (
+          <>
+            <div className="mb-6">
+              <video src={video.url} controls className="w-full rounded-lg">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div className="mb-4 flex justify-center space-x-2">
+              {[1, 2, 3, 4, 5].map(renderStar)}
+            </div>
+            <p className="text-center mb-4 text-gray-700">{t('currentRating')}: {rating}</p>
+            <textarea
+              className="w-full p-2 border rounded-lg mb-4 focus:ring-2 focus:ring-primary-500"
+              rows="3"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder={t('commentPlaceholder')}
+            />
+            <button
+              className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center"
+              onClick={handleRating}
+            >
+              <Send className="mr-2" />
+              {t('submitRating')}
+            </button>
+            {message && (
+              <div className="mt-4 p-4 bg-green-100 text-green-700 rounded-lg">
+                {message}
+              </div>
+            )}
+            {video.average_rating !== null && (
+              <p className="mt-4 text-center text-gray-700">
+                {t('averageRating')}: {video.average_rating.toFixed(1)} {t('outOf5')} ({video.ratings_count} {t('ratings')})
+              </p>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

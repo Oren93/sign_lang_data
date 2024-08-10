@@ -1,4 +1,11 @@
 {
     "about_us": "About Us",
+    "mission_title": "Our Mission",
+    "mission_content": "To revolutionize video data collection and analysis for research and innovation.",
+    "team_title": "Our Team",
+    "team_content": "A diverse group of experts dedicated to advancing video data science.",
+    "goals_title": "Our Goals",
+    "goals_content": "To provide cutting-edge tools and resources for video-based research across multiple disciplines.",
+    "goal_description_title": "Empowering Research Through Video Data",
     "goal_description": "Learn more about our mission to provide comprehensive data solutions through video collection and analysis. Our team is dedicated to advancing research with high-quality data."
-}
+  }

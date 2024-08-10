@@ -1,0 +1,9 @@
+{
+    "title": "Aðgangur að gögnum",
+    "data_format_title": "Gagnasnið",
+    "data_format_description": "Gagnasafnið okkar er í CSV-sniði. Hver lína táknar myndbandsfærslu með dálkum fyrir myndbandsauðkenni, glósu, upphafstíma, lokatíma og önnur viðeigandi lýsigögn.",
+    "download_title": "Sækja gagnasafn",
+    "download_description": "Þú getur sótt allt gagnasafnið með því að smella á hnappinn hér að neðan. Vinsamlegast athugaðu að skráin gæti verið stór.",
+    "download_button": "Sækja gagnasafn"
+  }
+  

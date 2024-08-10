@@ -7,4 +7,6 @@ passlib
 pyjwt
 apscheduler
 pydantic
+uvicorn
+python-multipart
 

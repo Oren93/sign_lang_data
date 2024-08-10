@@ -1,19 +1,23 @@
 {
-    "header": { 
-        "website_name": "Video Data Collection Portal",
-        "home_button": "Home",
-        "about_button": "About",
-        "contact_button": "Contacts",
-        "welcome_message": "Welcome, ",
-        "sign_up_button": "Sign Up",
-        "login_button": "Login",
-        "logout_button": "Logout",
-        "record_button": "Record",
-        "rate_button": "Rate Videos"
+    "header": {
+      "website_name": "Video Data Collection Portal",
+      "home_button": "Home",
+      "about_button": "About",
+      "contact_button": "Contact",
+      "welcome_message": "Welcome, ",
+      "sign_up_button": "Sign Up",
+      "login_button": "Login",
+      "logout_button": "Logout",
+      "record_button": "Record",
+      "rate_button": "Rate Videos"
     },
-
     "footer": {
-        "rights": "@2024 Video Data Collection Portal. All rights reserved."
+      "rights": "@2024 Video Data Collection Portal. All rights reserved.",
+      "quick_links": "Quick Links",
+      "contact_us": "Contact Us",
+      "newsletter": "Newsletter",
+      "newsletter_description": "Stay updated with our latest news and updates.",
+      "email_placeholder": "Enter your email",
+      "subscribe": "Subscribe"
     }
-}
-
+  }

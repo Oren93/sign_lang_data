@@ -8,15 +8,8 @@
     "submitButton": "Innskrá",
     "loginFailed": "Innskráning mistókst"
   },
-  "signup": {
-    "title": "Nýskráning",
-    "usernameLabel": "Notandanafn:",
-    "passwordLabel": "Lykilorð:",
-    "submitButton": "Nýskrá",
-    "signupFailed": "Nýskráning mistókst"
-  },
   "register": {
-    "title": "Nýskrá",
+    "title": "Nýskráning",
     "emailLabel": "Netfang",
     "emailPlaceholder": "Sláðu inn netfang",
     "usernameLabel": "Notandanafn",
@@ -24,9 +17,9 @@
     "passwordLabel": "Lykilorð",
     "passwordPlaceholder": "Sláðu inn lykilorð",
     "confirmPasswordLabel": "Staðfesta lykilorð",
-    "confirmPasswordPlaceholder": "Sláðu inn lykilorð",
+    "confirmPasswordPlaceholder": "Staðfestu lykilorðið þitt",
     "submitButton": "Nýskrá",
-    "errorMessage": "Gakktu úr skugga um að lykilorðin passi saman og séu lengri en 5 stafir",
+    "errorMessage": "Gakktu úr skugga um að lykilorðin passi og séu lengri en 5 stafir",
     "registerFailed": "Nýskráning mistókst"
   }
 }

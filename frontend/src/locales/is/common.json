@@ -1,18 +1,23 @@
 {
-    "header": { 
-        "website_name": "Myndbandsöflunargátt",
-        "home_button": "Heim",
-        "about_button": "Um",
-        "contact_button": "Hafa samband",
-        "welcome_message": "Velkominn, ",
-        "sign_up_button": "Nýskrá",
-        "login_button": "Innskrá",
-        "logout_button": "Útskrá",
-        "record_button": "Taktu upp", 
-        "rate_button": "Gefðu myndböndum einkunn"
+    "header": {
+      "website_name": "Myndbandssöfnunargátt",
+      "home_button": "Heim",
+      "about_button": "Um okkur",
+      "contact_button": "Hafa samband",
+      "welcome_message": "Velkomin(n), ",
+      "sign_up_button": "Nýskrá",
+      "login_button": "Innskrá",
+      "logout_button": "Útskrá",
+      "record_button": "Taka upp",
+      "rate_button": "Gefa einkunn"
     },
-
     "footer": {
-        "rights": "@2024 Myndbandsöflunargátt. Öll réttindi áskilin."
+      "rights": "@2024 Myndbandssöfnunargátt. Öll réttindi áskilin.",
+      "quick_links": "Flýtitenglar",
+      "contact_us": "Hafðu samband",
+      "newsletter": "Fréttabréf",
+      "newsletter_description": "Fáðu nýjustu fréttir og uppfærslur.",
+      "email_placeholder": "Sláðu inn netfangið þitt",
+      "subscribe": "Gerast áskrifandi"
     }
-}
+  }

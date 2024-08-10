@@ -1,0 +1,8 @@
+{
+    "title": "Access Data",
+    "data_format_title": "Data Format",
+    "data_format_description": "Our dataset is provided in CSV format. Each row represents a video entry with columns for video ID, gloss, start time, end time, and other relevant metadata.",
+    "download_title": "Download Dataset",
+    "download_description": "You can download the entire dataset by clicking the button below. Please note that the file size may be large.",
+    "download_button": "Download Dataset"
+  }
