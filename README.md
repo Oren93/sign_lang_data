@@ -110,3 +110,9 @@ Things that need to be done before the project ends:
   - When the user clicks on a gloss they can view the videos associated with that gloss and see more information about it (or at least the information we have).
 - We should add a progress bar to th front page showing how many glosses have at least one recording and another progress bar showing how many videos have at least five recordings.
 - Oren tried to deploy to Heroku and didn't have enough to make it work fully yet. He will continue working on that.
+
+### 23/08/2024
+
+- Joao has been working on tweaking the UI. Now there is probably a time to push the code to the main branch.
+- Oren has managed to deploy the backend, migrations work properly. Needs to build the frontend and serve the static files created from the backend to make it work.
+- Goal for next meeting is to have a deployed demo to navigate through.
