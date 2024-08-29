@@ -83,3 +83,36 @@ Things that need to be done before the project ends:
 - Saving videos, who did what and what glosses are covered.
 - The UI must look better.
 - Should deploy the system (check Heroku) and get feedback from Árni.
+
+### 24/07/2024
+
+- We discussed deployment. The aim is to use Heroku without containers.
+- We need to serve the frontend from the backend when the site is deployed. This means that we build the front-end (using npm build) and configure the backend to serve the static resources generated as a result.
+- On Heroku, we need to add a resource to the project (Heroku Postgres). We need to configure the project such that for local development, we use the database container, but in production, we use the Heroku Postgres database.
+
+- Joao pushed updates for the rating system and now he's working on the front-end and he's connecting it to the backend.
+- We talked about using DaisyUI for the front-end: https://daisyui.com/
+- Oren tried to do the Youtube integration, but it was not successful so far.
+- We also discussed adding an export functionality. We decided to add an export button (under the 'about' section of the page or another section called 'Data export'), which is accessible to logged in users. We will log what users have exported the data. We only export the youtube links, the gloss, and the signer ID. Possibly, we might want to export more information (rating?).
+
+### 31/07/2024
+
+- Oren had notified us he would be absent in the meeting.
+- We discussed three options for the interface. Joao had started working on one of them. Still some problems with Tailwind that he is working out.
+
+### 09/08/2024
+
+- Joao implemented the interface we had agreed on.
+- The interface is fully working and he is considering some small changes.
+- Joao demoed the interface.
+- We discussed modifying the "Access Data" card to "Explore the Data".
+  - Under that route, we would have a list of all the glosses and mark which ones have a recording.
+  - When the user clicks on a gloss they can view the videos associated with that gloss and see more information about it (or at least the information we have).
+- We should add a progress bar to th front page showing how many glosses have at least one recording and another progress bar showing how many videos have at least five recordings.
+- Oren tried to deploy to Heroku and didn't have enough to make it work fully yet. He will continue working on that.
+
+### 23/08/2024
+
+- Joao has been working on tweaking the UI. Now there is probably a time to push the code to the main branch.
+- Oren has managed to deploy the backend, migrations work properly. Needs to build the frontend and serve the static files created from the backend to make it work.
+- Goal for next meeting is to have a deployed demo to navigate through.
