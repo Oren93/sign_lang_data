@@ -28,11 +28,12 @@ def copy_source_files(directory, valid_extensions, valid_filenames):
     cpy = {}
     ignore_files = set()
     ignore_dirs = set()
-    ignore_path = r"C:\Users\joaos\OneDrive\Ambiente de Trabalho\Mestrado Estatística Aplicada\sign_lang_data\utils\.copyignore"
+    ignore_path = r"utils/.copyignore"
 
     if os.path.exists(ignore_path):
         with open(ignore_path, 'r') as f:
             for line in f:
+                
                 line = line.strip()
                 if line.endswith('/'):
                     ignore_dirs.add(line.rstrip('/'))
