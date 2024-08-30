@@ -116,3 +116,10 @@ Things that need to be done before the project ends:
 - Joao has been working on tweaking the UI. Now there is probably a time to push the code to the main branch.
 - Oren has managed to deploy the backend, migrations work properly. Needs to build the frontend and serve the static files created from the backend to make it work.
 - Goal for next meeting is to have a deployed demo to navigate through.
+
+### 30/08/2024
+
+- Joao has beeen working on exploring the data features. This is work in progress where the aim is to make it easy for people to navigate through the submitted data and get the status.
+- We agree that we start working on the report (instructions here: https://www.rannis.is/media/nyskopunarsjodur-namsmanna/Nyskopunarsjodur-namsmanna-Upplysingar-um-skyrsluskil.pdf)
+- Oren will work on deployment when he has time.
+- Translation to Icelandic will wait until after deployment.
