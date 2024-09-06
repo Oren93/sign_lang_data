@@ -1,5 +1,10 @@
-import React, { useContext } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -10,16 +15,27 @@ import Recorder from "./components/Recorder";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import VideoRating from "./components/VideoRating";
-import DataAccess from "./pages/DataAccess"; 
+import DataAccess from "./pages/DataAccess";
 
 const App = () => {
-  const { user, setToken, setUser } = useContext(UserContext);
+  const { user, setToken, setUser, loading } = useContext(UserContext);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (!loading) {
+      setIsReady(true);
+    }
+  }, [loading]);
 
   const handleLogout = () => {
     setToken(null);
     setUser(null);
     localStorage.removeItem("signLangRecToken");
   };
+
+  if (!isReady) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Router>
@@ -40,7 +56,7 @@ const App = () => {
               path="/rate"
               element={user ? <VideoRating /> : <Navigate to="/login" />}
             />
-            <Route  // Add this new route
+            <Route
               path="/data-access"
               element={user ? <DataAccess /> : <Navigate to="/login" />}
             />

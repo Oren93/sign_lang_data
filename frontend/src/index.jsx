@@ -4,9 +4,8 @@ import "./styles/index.css";
 import App from "./App.jsx";
 import reportWebVitals from "./reportWebVitals.jsx";
 import { UserProvider } from "./context/UserContext.jsx";
-import { I18nextProvider } from 'react-i18next';
-import i18n from './components/i18n'; // Ensure this import is here to initialize i18n
-
+import { I18nextProvider } from "react-i18next";
+import i18n from "./components/i18n";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,4 +19,3 @@ ReactDOM.render(
 );
 
 reportWebVitals();
-
