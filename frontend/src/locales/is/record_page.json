@@ -1,10 +1,9 @@
 {
     "sign_lang_record": "Myndbandsupptökutæki fyrir táknmál",
     "start_recording": "Byrja upptöku",
-    "stop_recording": "Hætta upptöku",
-    "leave_recording": "Hætta við upptöku",
-    "showing_gloss": "Orð sem á að þýða:",
-    "skip_gloss": "Sleppa",
+    "stop_recording": "Stöðva upptöku",
     "submit_recording": "Senda inn",
-    "gloss_to_sign": "Orð til að tákna"
-}
+    "skip_gloss": "Sleppa",
+    "gloss_to_sign": "Orð til að tákna",
+    "re_record": "Endurtaka upptöku"
+  } 

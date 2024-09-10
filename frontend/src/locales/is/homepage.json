@@ -1,13 +1,13 @@
 {
-    "welcome_message": "Velkomin á myndbandsöflunargátt okkar",
-    "portal_description": "Þessi gátt er hönnuð til að auðvelda söfnun myndefnis til rannsókna og þjálfunar.",
-    "navigation_prompt": "Vinsamlegast siglaðu í gegnum vefsíðuna til að leggja fram eða fá aðgang að úrræðum okkar.",
-    "contribute_data": "Leggja fram gögn",
-    "contribute_instruction": "Ef þú hefur myndefni sem þú vilt leggja fram í gagnasafn okkar, vinsamlegast fylgdu leiðbeiningunum hér að neðan:",
-    "guideline_compliance": "Gakktu úr skugga um að gögnin þín uppfylli innsendingarreglur okkar.",
-    "upload_files": "Hladdu upp skrám þínum með því að nota formið sem er til staðar.",
-    "go_to_upload": "Fara á upphleðslusíðu",
-    "access_data": "Fá aðgang að gögnum",
-    "access_instruction": "Ef þú ert að leita að því að fá aðgang að gögnum úr gagnasafninu okkar fyrir rannsóknir þínar, vinsamlegast fylgdu skrefunum hér að neðan:",
-    "browse_data": "Skoða tiltæk gögn"
-}
+    "welcome_message": "Velkomin(n) í Myndbandasöfnunargáttina okkar",
+    "portal_description": "Við styðjum við rannsóknir og nýsköpun með alhliða söfnun og stjórnun myndbandsgagna.",
+    "contribute_data": "Leggja til gögn",
+    "access_data": "Kanna gögn",
+    "explore_repository": "Skoða safnið",
+    "learn_more": "Frekari upplýsingar",
+    "feature_description": "Lærðu hvernig þú getur {{feature}} og lagt þitt af mörkum til banbrjótandi rannsókna.",
+    "ready_to_start": "Tilbúin(n) að byrja?",
+    "join_community": "Vertu með í samfélaginu okkar og byrjaðu að leggja þitt af mörkum til rannsókna á myndbandsgögnum í dag.",
+    "sign_up_now": "Nýskrá núna",
+    "start_contributing": "Byrja að leggja til"
+  }

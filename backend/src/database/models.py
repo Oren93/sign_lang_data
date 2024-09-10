@@ -20,6 +20,7 @@ class Video(Base):
     uploaded_at = Column(DateTime(timezone=True), server_default=func.now())
     user = relationship("User", back_populates="videos")
     glosses = relationship("Gloss", secondary="gloss_videos", back_populates="videos")
+    ratings = relationship("VideoRating", back_populates="video")
 
 class User(Base):
     __tablename__ = "users"
@@ -47,3 +48,16 @@ class GlossVideo(Base):
     __table_args__ = (
         UniqueConstraint('gloss_id', 'video_id', name='unique_gloss_video'),
     )
+
+
+class VideoRating(Base):
+    __tablename__ = "video_ratings"
+    id = Column(Integer, primary_key=True, index=True)
+    video_id = Column(Integer, ForeignKey('videos.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    rating = Column(Integer, nullable=False)
+    comment_text = Column(Text)
+    posted_on = Column(DateTime(timezone=True), server_default=func.now())
+    video = relationship("Video", back_populates="ratings")
+    user = relationship("User")
+

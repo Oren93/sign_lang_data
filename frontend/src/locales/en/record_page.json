@@ -2,9 +2,8 @@
   "sign_lang_record": "Sign Language Video Recorder",
   "start_recording": "Start Recording",
   "stop_recording": "Stop Recording",
-  "leave_recording": "Leave Recording",
-  "showing_gloss": "Gloss to be translated:",
-  "skip_gloss": "Skip",
   "submit_recording": "Submit",
-  "gloss_to_sign": "Word to Sign"
+  "skip_gloss": "Skip",
+  "gloss_to_sign": "Word to Sign",
+  "re_record": "Re-record"
 }

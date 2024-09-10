@@ -2,5 +2,10 @@
     "contact_us": "Hafðu samband",
     "info_message": "Fyrir frekari upplýsingar eða fyrirspurnir um þjónustu okkar, vinsamlegast hafðu samband við okkur með upplýsingunum hér að neðan eða fylltu út sambandseyðublaðið okkar.",
     "email_info": "Netfang: contact@videodataportal.com",
-    "phone_info": "Sími: +123 456 7890"
-}
+    "phone_info": "Sími: +123 456 7890",
+    "address_info": "Heimilisfang: Datagata 123, Rannsóknarbær, 12345",
+    "form_name": "Nafn",
+    "form_email": "Netfang",
+    "form_message": "Skilaboð",
+    "form_submit": "Senda skilaboð"
+  }

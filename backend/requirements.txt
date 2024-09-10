@@ -6,3 +6,7 @@ python-jose
 passlib
 pyjwt
 apscheduler
+pydantic
+uvicorn
+python-multipart
+
