@@ -7,7 +7,7 @@ from src.database.database import engine
 from src.database.models import Base, Migration
 from sqlalchemy.exc import OperationalError
 from sqlalchemy import create_engine, inspect
-from src.database.database import SQLALCHEMY_DATABASE_URL
+from src.database.database import DATABASE_URL
 from src.utils.logging import get_logger
 
 logger = get_logger()
@@ -36,7 +36,7 @@ def ensure_migrations_table(engine):
         Migration.__table__.create(engine)
 
 def apply_migrations():
-    engine = create_engine(SQLALCHEMY_DATABASE_URL)
+    engine = create_engine(DATABASE_URL)
     ensure_migrations_table(engine)
 
     session = SessionLocal()

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from endpoints import videos, vocabulary, user, ratings
 from src.scheduler import start_scheduler
@@ -8,13 +8,12 @@ from src.database import models
 from fastapi.staticfiles import StaticFiles
 import os
 from fastapi.responses import FileResponse
-from starlette.exceptions import HTTPException as StarletteHTTPException
 
 app = FastAPI()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-UPLOAD_DIR = "uploaded_videos"
+UPLOAD_DIR = "videos"
 
 app.add_middleware(
     CORSMiddleware,

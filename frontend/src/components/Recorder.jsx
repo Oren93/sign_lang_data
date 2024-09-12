@@ -222,11 +222,6 @@ const Recorder = () => {
             <h3 className="text-xl font-semibold mb-2">{t("gloss_to_sign")}</h3>
             <p className="text-2xl font-bold text-primary-600">{currentWord}</p>
           </div>
-          {protectedMessage && (
-            <div className="mt-4 p-4 bg-blue-100 text-blue-700 rounded-lg">
-              {protectedMessage}
-            </div>
-          )}
         </div>
       </div>
     </div>
