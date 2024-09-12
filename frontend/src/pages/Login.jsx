@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import API_BASE_URL from "/app/src/config";
 
 const Login = ({ handleLogin }) => {
-  const { t } = useTranslation('login_sign_up');
+  const { t } = useTranslation("login_sign_up");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch("http://localhost:8001/auth/token", {
+    const response = await fetch(`${API_BASE_URL}/auth/token`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

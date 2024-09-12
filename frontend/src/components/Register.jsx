@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { UserContext } from "../context/UserContext";
-import { Mail, Lock, User, UserPlus } from 'lucide-react';
+import { Mail, Lock, User, UserPlus } from "lucide-react";
+import API_BASE_URL from "/app/src/config";
 
 const Register = () => {
-  const { t } = useTranslation('login_sign_up');
+  const { t } = useTranslation("login_sign_up");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -27,7 +28,7 @@ const Register = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8001/user/create",
+        `${API_BASE_URL}/user/create`,
         requestOptions
       );
       const data = await response.json();
@@ -36,7 +37,9 @@ const Register = () => {
         setToken(data.access_token);
         navigate("/");
       } else {
-        setErrorMessage(data.detail || "Registration failed. Please try again.");
+        setErrorMessage(
+          data.detail || "Registration failed. Please try again."
+        );
       }
     } catch (error) {
       console.error("Registration error:", error);
@@ -56,10 +59,14 @@ const Register = () => {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
-        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">{t("register.title")}</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">
+          {t("register.title")}
+        </h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-gray-700 mb-2" htmlFor="email">{t("register.emailLabel")}</label>
+            <label className="block text-gray-700 mb-2" htmlFor="email">
+              {t("register.emailLabel")}
+            </label>
             <div className="relative">
               <input
                 type="email"
@@ -70,11 +77,16 @@ const Register = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              <Mail
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                size={18}
+              />
             </div>
           </div>
           <div>
-            <label className="block text-gray-700 mb-2" htmlFor="username">{t("register.usernameLabel")}</label>
+            <label className="block text-gray-700 mb-2" htmlFor="username">
+              {t("register.usernameLabel")}
+            </label>
             <div className="relative">
               <input
                 type="text"
@@ -85,11 +97,16 @@ const Register = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              <User
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                size={18}
+              />
             </div>
           </div>
           <div>
-            <label className="block text-gray-700 mb-2" htmlFor="password">{t("register.passwordLabel")}</label>
+            <label className="block text-gray-700 mb-2" htmlFor="password">
+              {t("register.passwordLabel")}
+            </label>
             <div className="relative">
               <input
                 type="password"
@@ -100,11 +117,19 @@ const Register = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              <Lock
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                size={18}
+              />
             </div>
           </div>
           <div>
-            <label className="block text-gray-700 mb-2" htmlFor="confirmPassword">{t("register.confirmPasswordLabel")}</label>
+            <label
+              className="block text-gray-700 mb-2"
+              htmlFor="confirmPassword"
+            >
+              {t("register.confirmPasswordLabel")}
+            </label>
             <div className="relative">
               <input
                 type="password"
@@ -115,12 +140,15 @@ const Register = () => {
                 onChange={(e) => setConfirmationPassword(e.target.value)}
                 required
               />
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              <Lock
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                size={18}
+              />
             </div>
           </div>
           {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700 transition-colors duration-300 flex items-center justify-center"
           >
             <UserPlus size={18} className="mr-2" />

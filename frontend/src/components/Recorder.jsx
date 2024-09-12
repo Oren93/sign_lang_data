@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Video, Play, Pause, Send, SkipForward, RotateCcw } from 'lucide-react';
+import { Video, Play, Pause, Send, SkipForward, RotateCcw } from "lucide-react";
+import API_BASE_URL from "/app/src/config";
 
 const Recorder = () => {
   const { t } = useTranslation("record_page");
@@ -28,7 +29,7 @@ const Recorder = () => {
 
   const fetchWords = async () => {
     try {
-      const response = await fetch("http://localhost:8001/words", {
+      const response = await fetch(`${API_BASE_URL}/words`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("signLangRecToken")}`,
         },
@@ -113,7 +114,9 @@ const Recorder = () => {
     const token = localStorage.getItem("signLangRecToken");
     if (!token) {
       console.error("No token found");
-      setProtectedMessage("No authentication token found. Please log in again.");
+      setProtectedMessage(
+        "No authentication token found. Please log in again."
+      );
       return;
     }
 
@@ -122,7 +125,7 @@ const Recorder = () => {
     formData.append("gloss_id", currentWordId);
 
     try {
-      const response = await fetch("http://localhost:8001/submit", {
+      const response = await fetch(`${API_BASE_URL}/submit`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -132,7 +135,9 @@ const Recorder = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setProtectedMessage(`Video submitted successfully. ID: ${data.id}, Filename: ${data.filename}, Gloss ID: ${data.gloss_id}`);
+        setProtectedMessage(
+          `Video submitted successfully. ID: ${data.id}, Filename: ${data.filename}, Gloss ID: ${data.gloss_id}`
+        );
         setRecordedBlob(null);
         setReviewing(false);
         videoRef.current.src = "";
@@ -140,7 +145,9 @@ const Recorder = () => {
         loadNextWord();
       } else {
         const errorData = await response.json();
-        setProtectedMessage(`Failed to submit video. Status: ${response.status}. Error: ${errorData.detail}`);
+        setProtectedMessage(
+          `Failed to submit video. Status: ${response.status}. Error: ${errorData.detail}`
+        );
       }
     } catch (error) {
       console.error("Error submitting video:", error);
@@ -151,7 +158,9 @@ const Recorder = () => {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">{t("sign_lang_record")}</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
+          {t("sign_lang_record")}
+        </h1>
         <div className="space-y-6">
           <div className="flex justify-center">
             <video

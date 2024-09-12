@@ -2,10 +2,11 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { UserContext } from "../context/UserContext";
-import { Mail, Lock, LogIn } from 'lucide-react';
+import { Mail, Lock, LogIn } from "lucide-react";
+import API_BASE_URL from "/app/src/config";
 
 const Login = () => {
-  const { t } = useTranslation('login_sign_up');
+  const { t } = useTranslation("login_sign_up");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -13,15 +14,20 @@ const Login = () => {
   const navigate = useNavigate();
 
   const submitLogin = async () => {
+    const formData = new URLSearchParams();
+    formData.append("grant_type", "password");
+    formData.append("username", email);
+    formData.append("password", password);
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `grant_type=&username=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&scope=&client_id=&client_secret=`
+      body: formData,
     };
 
     try {
       const response = await fetch(
-        "http://localhost:8001/user/login",
+        `${API_BASE_URL}/user/login`,
         requestOptions
       );
       const data = await response.json();
@@ -47,10 +53,14 @@ const Login = () => {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
-        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">{t("login.title")}</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">
+          {t("login.title")}
+        </h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-gray-700 mb-2" htmlFor="email">{t("login.emailLabel")}</label>
+            <label className="block text-gray-700 mb-2" htmlFor="email">
+              {t("login.emailLabel")}
+            </label>
             <div className="relative">
               <input
                 type="email"
@@ -61,11 +71,16 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              <Mail
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                size={18}
+              />
             </div>
           </div>
           <div>
-            <label className="block text-gray-700 mb-2" htmlFor="password">{t("login.passwordLabel")}</label>
+            <label className="block text-gray-700 mb-2" htmlFor="password">
+              {t("login.passwordLabel")}
+            </label>
             <div className="relative">
               <input
                 type="password"
@@ -76,12 +91,15 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              <Lock
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                size={18}
+              />
             </div>
           </div>
           {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center"
           >
             <LogIn size={18} className="mr-2" />
