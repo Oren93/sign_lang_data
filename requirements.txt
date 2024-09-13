@@ -1,0 +1,11 @@
+fastapi
+psycopg2
+opencv-python-headless
+sqlalchemy
+python-jose
+passlib
+pyjwt
+apscheduler
+gunicorn
+uvicorn
+python-multipart

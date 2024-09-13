@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Star, Send, AlertCircle } from "lucide-react";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "/app/src/config";
 
 const CustomStar = ({
   filled,
@@ -34,8 +35,6 @@ const VideoRating = () => {
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState(null);
-
-  const API_BASE_URL = "http://localhost:8001";
 
   useEffect(() => {
     if (!user) {

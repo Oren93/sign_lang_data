@@ -8,11 +8,11 @@ from src.user.auth import get_current_user
 
 router = APIRouter()
 
-UPLOAD_DIR = "uploaded_videos"
+UPLOAD_DIR = "videos"
 FILE_NAME_LENGTH = 6
 
 if not os.path.exists(UPLOAD_DIR):
-    os.makedirs(UPLOAD_DIR)
+    os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @router.post("/submit")
 async def upload_video(

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Video, Loader } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { Video, Loader } from "lucide-react";
+import API_BASE_URL from "/app/src/config";
 
 const GlossDetails = ({ gloss }) => {
-  const { t } = useTranslation('data_access');
+  const { t } = useTranslation("data_access");
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,15 +15,15 @@ const GlossDetails = ({ gloss }) => {
   const fetchGlossVideos = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:8001/gloss/${gloss.id}/videos`, {
+      const response = await fetch(`${API_BASE_URL}/gloss/${gloss.id}/videos`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('signLangRecToken')}`,
+          Authorization: `Bearer ${localStorage.getItem("signLangRecToken")}`,
         },
       });
       const data = await response.json();
       setVideos(data.videos);
     } catch (error) {
-      console.error('Error fetching gloss videos:', error);
+      console.error("Error fetching gloss videos:", error);
     } finally {
       setLoading(false);
     }
@@ -50,7 +51,7 @@ const GlossDetails = ({ gloss }) => {
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-600">{t('no_videos')}</p>
+        <p className="text-center text-gray-600">{t("no_videos")}</p>
       )}
     </div>
   );

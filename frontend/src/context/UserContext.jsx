@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import API_BASE_URL from "/app/src/config";
 
 export const UserContext = createContext();
 
@@ -20,7 +21,7 @@ export const UserProvider = (props) => {
 
         try {
           const response = await fetch(
-            "http://localhost:8001/user/current",
+            `${API_BASE_URL}/user/current`,
             requestOptions
           );
 
