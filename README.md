@@ -1,125 +1,167 @@
 # Icelandic Sign Language Data Collection Project
 
-**This project aims to build a user friendly platform for sign language data collection.**
+## Project Overview
+
+This project aims to collect and manage video data of Icelandic sign language to create a large, open dataset. The dataset will be valuable for AI experts developing tools such as speech-to-sign and sign-to-speech translation systems. It is designed for use by the Icelandic deaf community, researchers, and AI engineers, empowering them to contribute and utilize video data to advance sign language technology.
 
 _Funded by the Icelandic innovation fund (Rannís) and is built in collaboration with the communication center._
 
-We first focus on the Icelandic deaf community, but we aim to bring it to other countries, regions and languages later on.
+## Key Features:
+
+- **Video Recording**: Signers can record themselves signing Icelandic sign language, one video per gloss.
+- **Video Rating**: Users can rate and comment on videos, to ensure high data quality.
+- **Data Exploration**: View and search the collected video data.
+- **Open Dataset**: Contributions help grow the open-access dataset for Icelandic sign language.
+
+## Technologies:
+
+- **Frontend**: React with Tailwind CSS
+- **Backend**: FastAPI
+- **Database**: PostgreSQL
+- **Containerization**: Docker containers for development
+- **Hosting**: Heroku (for production deployment)
 
 ---
 
-## Weekly Meeting Notes
+## Getting Started with Development
 
-### 27/05/2024
+Follow these instructions to set up your local development environment.
 
-We met with representatives of the communication center, and a deaf programmer, Árni, who will likely join us for two months. We discussed the best approaches to collect data, one way is the platform we are building, another way, which they take charge with, is to collect existing data from many different sources, including children interactive books, news with sign caption, and other sources traced back to 1996.
+### Prerequisites
 
-We then discussed possible features we would like to have on our website:
+Ensure that you have the following installed:
 
-**Backend**
+- **Docker**
+- **Git**
+- **Make** (not a must)
 
-- **User authenthication** - sign up, log in, profile settings.
-- **Design a correctly structured database:**
-  - **Users table** - Login info, hashed password, Email...
-  - **Profiles** - Age, language, region, deaf or not, and other factors that may influence the language.
-  - **Glosses** - List of glosses (words/patterns) that we would like to record, ideally ordered by popularity.
-  - **Recordings** - Metadata about the recorded videos.
-  - **Score** - Counting how many videos a user has uploaded and how many videos they have rated (two separate scores on their profile).
-  - **Leaderboard** - Showing activity with respect to the scores above (need to check if this is something people want to see though).
-  - **Badges** (low priority) - Gamified experience, to encourage users to contribute.
-- **Vocabulary** - Build a dictionary of possible glosses, prioritize by popularity.
-- **Video Storing** - Explore the best approach for storing the videos.
-- **Uploading glosses** - Give the user the ability to upload a .csv file of glosses. Any new glosses in the file would then be added to the database.
+### Step 1: Clone the Repository
 
-**Frontend**
+```bash
+git clone git@github.com:Oren93/sign_lang_data.git
+cd sign_lang_data
+```
 
-- **UI with good UX:**
-  - **Instant recording** - Hassle free, minimal clicks to start recording, countdown after press strart.
-  - **Preview** - Possibility to play the recorded video before submitting.
-  - **Smooth transition** - Allow instantly to move to the next gloss after submitting.
+### Step 2: Set up Docker
 
-Lastly we came up with a very short to do list for the coming week
+You’ll use Docker to spin up all services (frontend, backend, and database) in isolated containers.
 
-**To Do**
+- **To build and start all services**:
+  ```bash
+  make all
+  ```
+  Or alternatively:
+  ```bash
+  docker-compose up --build -d
+  ```
 
-- Prioritize feature
-- Start coding the most important features.
+This will set up the following services:
 
-### 03/06/2024
+- **Frontend**: React application running on `http://localhost:3001`
+- **Backend**: FastAPI server running on `http://localhost:8000`
+- **Database**: PostgreSQL instance on port `5432`
 
-Oren is working on authentication. Joao was away, but is now going to work on glosses and internationalization. The aim is to do everything in English and then translate it to Icelandic.
+### Step 3: Run the Frontend in Development Mode
 
-Oren is away next week and Joao is back then. We aim for a demo meeting in two weeks.
+For frontend development, run the following command to start the React development server:
 
-### 25/06/2024
+```bash
+make dev
+```
 
-We discussed the data model. We need to add models for videos and a table that connects a video to a user and a gloss. We might also want to consider having a rating table, but that would be something extra.
+Or:
 
-The user registration and authentication is working, but needs a bit of polishing. Oren mentioned that he needs to figure out which user is sending a request in the backend when the user is logged in.
+```bash
+docker exec -it sign_ui npm start # can add -d flag for detuch mode, to keep using the same terminal instance
+```
 
-Video uploading works, but the video is not associated with a user yet.
+This will spin up all services and run the frontend in development mode. The app will be accessible at `http://localhost:3001`.
 
-The scraping is still ongoing.
+### Step 4: Building the Frontend
 
-We discussed how to prioritize the glosses and we decided it might be reasonable to give users the ability to mark a gloss as important, meaning it should be prioritized.
+Once you are happy with the result you should build the frontend for production and move the static files to the backend:
 
-We also discussed the project complexity. Currently, it is organized as three containers and we discussed simplifying to be a single container. We further discussed the possibility of serving templates through fastapi instead of having a separate react front-end.
+```bash
+make build
+```
 
-### 17/07/2024
+Or manually copy the commands described in `Makefile` under `build`
 
-- We changed the name conventions for the videos. In the future, we want to upload the videos automatically to Youtube.
-- We need to add the gloss to the video as well.
-- Tried moving to one docker container, caused problems so we have three containers.
-- Decided to keep on using React.
-- Work on video evaluation has started.
-- Migration system for database.
+This will:
 
-Next steps:
-- Deploy the system (highest priority).
-- Finish video evaluation.
-- Consider how to upload videos to youtube (unlisted).
+- Build the frontend
+- Move the static files to the backend directory to be served by the backend
+- Stage the new files in Git for the backend repository
 
-Things that need to be done before the project ends:
-- Saving videos, who did what and what glosses are covered.
-- The UI must look better.
-- Should deploy the system (check Heroku) and get feedback from Árni.
+The FastAPI backend with the newly built static files will be accessible at `http://localhost:8000`. API documentation is available at `http://localhost:8000/docs` (Swagger UI).
 
-### 24/07/2024
+### Step 5: Make a Pull Request
 
-- We discussed deployment. The aim is to use Heroku without containers.
-- We need to serve the frontend from the backend when the site is deployed. This means that we build the front-end (using npm build) and configure the backend to serve the static resources generated as a result.
-- On Heroku, we need to add a resource to the project (Heroku Postgres). We need to configure the project such that for local development, we use the database container, but in production, we use the Heroku Postgres database.
+After you are satisfied with the results, you can commit and push your branch, then open a new pull request. Please write detailed information about the changes, and if a known error exists, add it to the issues page of the repo.
 
-- Joao pushed updates for the rating system and now he's working on the front-end and he's connecting it to the backend.
-- We talked about using DaisyUI for the front-end: https://daisyui.com/
-- Oren tried to do the Youtube integration, but it was not successful so far.
-- We also discussed adding an export functionality. We decided to add an export button (under the 'about' section of the page or another section called 'Data export'), which is accessible to logged in users. We will log what users have exported the data. We only export the youtube links, the gloss, and the signer ID. Possibly, we might want to export more information (rating?).
+```bash
+git checkout -b <new-branch-name>
+git commit -m "commit message"
+git push
+```
 
-### 31/07/2024
+## Troubleshooting
 
-- Oren had notified us he would be absent in the meeting.
-- We discussed three options for the interface. Joao had started working on one of them. Still some problems with Tailwind that he is working out.
+There is a known issue, that in the first time setting up the docker environment, the database isn't set up. To manually activate the database migrations, follow this steps:
 
-### 09/08/2024
+- Run make `make back_bash` or `docker exec -it sign_backend bash` to go into the bash of the backend container
+- Inside the backend bash run `python cli.py migrate` to manually trigger the migration
 
-- Joao implemented the interface we had agreed on.
-- The interface is fully working and he is considering some small changes.
-- Joao demoed the interface.
-- We discussed modifying the "Access Data" card to "Explore the Data".
-  - Under that route, we would have a list of all the glosses and mark which ones have a recording.
-  - When the user clicks on a gloss they can view the videos associated with that gloss and see more information about it (or at least the information we have).
-- We should add a progress bar to th front page showing how many glosses have at least one recording and another progress bar showing how many videos have at least five recordings.
-- Oren tried to deploy to Heroku and didn't have enough to make it work fully yet. He will continue working on that.
+Sometimes you may want to reinstall all node modules and start fresh. To do this go to the UI container bash, remove the `node_modeules` directory and `package-lock.json` and install everything againg:
 
-### 23/08/2024
+```bash
+make ui_bash
+rm -rf node_modules
+rm package-lock.json
+npm install
+npm start
+```
 
-- Joao has been working on tweaking the UI. Now there is probably a time to push the code to the main branch.
-- Oren has managed to deploy the backend, migrations work properly. Needs to build the frontend and serve the static files created from the backend to make it work.
-- Goal for next meeting is to have a deployed demo to navigate through.
+## Additional information
 
-### 30/08/2024
+### Database Access
 
-- Joao has beeen working on exploring the data features. This is work in progress where the aim is to make it easy for people to navigate through the submitted data and get the status.
-- We agree that we start working on the report (instructions here: https://www.rannis.is/media/nyskopunarsjodur-namsmanna/Nyskopunarsjodur-namsmanna-Upplysingar-um-skyrsluskil.pdf)
-- Oren will work on deployment when he has time.
-- Translation to Icelandic will wait until after deployment.
+A PostgreSQL database is provided in the development environment. You can access the database directly using:
+
+```bash
+make db_bash
+```
+
+This opens a PostgreSQL shell where you can query the database.
+
+### Access Logs
+
+You can view logs for each service using the following commands:
+
+- Frontend logs: `make ui_logs`
+- Backend logs: `make back_logs`
+- Database logs: `make db_logs`
+
+_Note: Since the UI container does no longer run the `npm start` on start up, the logs are irrelevant, to get the logs you should run the dev mode without the `-d` flag_
+
+---
+
+## Contribution
+
+If you're contributing to the project, you can fork the repository and make a PR.
+
+If you haven't done so yet, please contact hafsteine@hi.is to let us know that you're joining the coding effort.
+
+### Tasks to help with
+
+- An important task at the moment is to review the content and correct it if needed, both in Icelandic and English.
+- There are open issues to address, check out the issues tab.
+  A
+  dditionally, there are feature ideas waiting to be implemented, which can be found here:
+
+- **YouTube integration:** The project should have its own YouTube account. Every video uploaded should be immediately added to YouTube from the backend, and the URL should be stored in the database. The videos will not be accessible on YouTube except by using that URL. With this change, updates are also needed to the video overview and video rating pages to play the video directly from YouTube within the website.
+- **Export data:** Currently, users can view the recorded videos. However, since the goal is to create an open dataset, we need an easy way to download the data. There should be a button that runs a script to gather all relevant information from the database excluding private information and provides a script to download all the sign videos from YouTube directly.
+- **Project Email:** Since, in the first step, you created a project YouTube page, you must have created a Google account. This account can be used for the website's Contact Us page. It needs to be properly set up with the contact form.
+- **Settings page:** A standard page where users can change their password, email, and perhaps even district and language, in case the website's goal expands to collect multiple sign languages.
+- **Get creative:** Any new ideas you come up with are welcome.
+- **Deploy:** Find sponsors to help deploy this website.
