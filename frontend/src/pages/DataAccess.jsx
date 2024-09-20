@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Download, Video, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import GlossDetails from "../components/GlossDetails";
 import API_BASE_URL from "/app/src/config";
 

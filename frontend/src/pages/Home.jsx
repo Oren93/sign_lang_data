@@ -2,17 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { UserContext } from "../context/UserContext";
-import {
-  Video,
-  Upload,
-  Download,
-  Search,
-  Info,
-  Mail,
-  LogIn,
-  UserPlus,
-  ArrowRight,
-} from "lucide-react";
+import { Upload, Download, Info, ArrowRight } from "lucide-react";
 
 const Home = () => {
   const { t } = useTranslation("homepage");

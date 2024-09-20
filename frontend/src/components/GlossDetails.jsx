@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Video, Loader } from "lucide-react";
+import { Loader } from "lucide-react";
 import API_BASE_URL from "/app/src/config";
 
 const GlossDetails = ({ gloss }) => {

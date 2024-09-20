@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Video, Play, Pause, Send, SkipForward, RotateCcw } from "lucide-react";
+import { Play, Pause, Send, SkipForward, RotateCcw } from "lucide-react";
 import API_BASE_URL from "/app/src/config";
 
 const Recorder = () => {
@@ -11,7 +11,7 @@ const Recorder = () => {
   const [currentWord, setCurrentWord] = useState("");
   const [currentWordId, setCurrentWordId] = useState("");
   const [wordsObject, setWordsObject] = useState({});
-  const [protectedMessage, setProtectedMessage] = useState("");
+  const [, setProtectedMessage] = useState("");
   const videoRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const wordIds = useRef([]);

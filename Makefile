@@ -2,25 +2,50 @@
 COMPOSE_FILE = docker-compose.yml
 
 # Targets
-.PHONY: frontend backend database all
+.PHONY: frontend backend database all dev build stop_ui stop_back stop_db
 
 # ------------- Build -------------
 # Build frontend service
 ui:
-	docker-compose -f $(COMPOSE_FILE) build frontend
+	docker-compose -f $(COMPOSE_FILE) up --build -d frontend
 
 # Build backend service
 back:
-	docker-compose -f $(COMPOSE_FILE) build backend
+	docker-compose -f $(COMPOSE_FILE) up --build -d backend
 
 # Build database service
 db:
-	docker-compose -f $(COMPOSE_FILE) build database
+	docker-compose -f $(COMPOSE_FILE) up --build -d database
 
 # Build and start all services
 all:
 	docker-compose -f $(COMPOSE_FILE) up -d --build
 
+# Start all services with frontend in development mode
+dev:
+	docker-compose -f $(COMPOSE_FILE) up -d
+	docker exec -it sign_ui npm start
+
+# Build frontend and move static files to backend
+build:
+	docker-compose -f $(COMPOSE_FILE) up -d
+	docker exec -it sign_ui npm run build
+	rm -rf backend/build
+	mv frontend/build backend/.
+	git add backend/build
+
+# ------------- Stop --------------
+# Stop frontend service
+stop_ui:
+	docker-compose -f $(COMPOSE_FILE) stop frontend
+
+# Stop backend service
+stop_back:
+	docker-compose -f $(COMPOSE_FILE) stop backend
+
+# Stop database service
+stop_db:
+	docker-compose -f $(COMPOSE_FILE) stop database
 
 # ------------- Bash --------------
 # Go into ui container
