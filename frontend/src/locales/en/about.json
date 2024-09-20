@@ -1,11 +1,11 @@
 {
-    "about_us": "About Us",
-    "mission_title": "Our Mission",
-    "mission_content": "To revolutionize video data collection and analysis for research and innovation.",
-    "team_title": "Our Team",
-    "team_content": "A diverse group of experts dedicated to advancing video data science.",
-    "goals_title": "Our Goals",
-    "goals_content": "To provide cutting-edge tools and resources for video-based research across multiple disciplines.",
-    "goal_description_title": "Empowering Research Through Video Data",
-    "goal_description": "Learn more about our mission to provide comprehensive data solutions through video collection and analysis. Our team is dedicated to advancing research with high-quality data."
-  }
+  "about_us": "About",
+  "mission_title": "Our Mission",
+  "mission_content": "We encourage the Icelandic deaf community to help build the largest sign language dataset. The data will be openly accessible for anyone aiming to use it, whether for developing AI translation models or for educational purposes, contributing to the community.",
+  "team_title": "Our Team",
+  "team_content": "Our team is made up of students and faculty members from the University of Iceland, collaborating with the communication center.",
+  "goals_title": "Our Goals",
+  "goals_content": "We aim to make data collection simple and enjoyable, encouraging more signers to participate and expand the dataset. The openness of the data attracts curious AI engineers to innovate and create tools that could be useful for the community.",
+  "goal_description_title": "Supporting Research with Video Data",
+  "goal_description": "Our platform is designed to empower the Icelandic deaf community by providing a space to record sign language videos, with the aim of building the largest open-access dataset for Icelandic sign language. Every contribution helps shape the future of communication, whether through AI translation models or educational tools for sign language learners.\n\nWe invite all signers to sign up and participate by recording videos and adding to this important resource. Your contributions will not only help preserve the Icelandic sign language but also inspire future technology to bridge communication gaps.\n\nFor developers and AI enthusiasts, we welcome you to join us in taking this project further. Whether it's enhancing the platform or using the dataset to create innovative tools, your skills can make a real impact. Let's work together to build solutions that can truly serve the deaf community."
+}

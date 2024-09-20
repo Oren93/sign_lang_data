@@ -1,13 +1,13 @@
 {
-    "welcome_message": "Velkomin(n) í Myndbandasöfnunargáttina okkar",
-    "portal_description": "Við styðjum við rannsóknir og nýsköpun með alhliða söfnun og stjórnun myndbandsgagna.",
-    "contribute_data": "Leggja til gögn",
-    "access_data": "Kanna gögn",
-    "explore_repository": "Skoða safnið",
-    "learn_more": "Frekari upplýsingar",
-    "feature_description": "Lærðu hvernig þú getur {{feature}} og lagt þitt af mörkum til banbrjótandi rannsókna.",
-    "ready_to_start": "Tilbúin(n) að byrja?",
-    "join_community": "Vertu með í samfélaginu okkar og byrjaðu að leggja þitt af mörkum til rannsókna á myndbandsgögnum í dag.",
-    "sign_up_now": "Nýskrá núna",
-    "start_contributing": "Byrja að leggja til"
-  }
+  "welcome_message": "Velkomin(n) í Myndbandasöfnunargáttina okkar",
+  "portal_description": "Við styðjum við rannsóknir og nýsköpun með alhliða söfnun og stjórnun myndbandsgagna.",
+  "contribute_data": "Leggja til gögn",
+  "access_data": "Kanna gögn",
+  "explore_repository": "Skoða safnið",
+  "learn_more": "Frekari upplýsingar",
+  "feature_description": "Lærðu hvernig þú getur lært meira og lagt þitt af mörkum til banbrjótandi rannsókna.",
+  "ready_to_start": "Tilbúin(n) að byrja?",
+  "join_community": "Vertu með í samfélaginu okkar og byrjaðu að leggja þitt af mörkum til rannsókna á myndbandsgögnum í dag.",
+  "sign_up_now": "Nýskrá núna",
+  "start_contributing": "Byrja að leggja til"
+}

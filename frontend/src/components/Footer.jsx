@@ -58,8 +58,8 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">
               {t("footer.contact_us")}
             </h4>
-            <p>{t("footer.email_info")}: contact@videodataportal.com</p>
-            <p>{t("footer.phone_info")}: +123 456 7890</p>
+            <p>{t("footer.email_info")}</p>
+            <p>{t("footer.phone_info")}</p>
           </div>
           {/*
           <div>

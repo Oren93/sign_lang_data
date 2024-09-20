@@ -1,11 +1,11 @@
 {
-    "contact_us": "Contact Us",
-    "info_message": "For more information or inquiries about our services, please contact us using the details below or fill out our contact form.",
-    "email_info": "Email: contact@videodataportal.com",
-    "phone_info": "Phone: +123 456 7890",
-    "address_info": "Address: 123 Data Street, Research City, 12345",
-    "form_name": "Name",
-    "form_email": "Email",
-    "form_message": "Message",
-    "form_submit": "Send Message"
-  }
+  "contact_us": "Contact Us",
+  "info_message": "For more information or inquiries about our services, or if you please to join the team, please contact us using the details below.",
+  "email_info": "Email: hafsteinne@hi.is",
+  "phone_info": "Phone: +354 525 4466",
+  "address_info": "Address: Bjargargata 1, 102 Reykjavik",
+  "form_name": "Name",
+  "form_email": "Email",
+  "form_message": "Message",
+  "form_submit": "Send Message"
+}
