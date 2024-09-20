@@ -150,7 +150,7 @@ _Note: Since the UI container does no longer run the `npm start` on start up, th
 
 If you're contributing to the project, you can fork the repository and make a PR.
 
-If you haven't done so yet, please contact hafsteine@hi.is to let us know that you're joining the coding effort.
+If you haven't done so yet, please contact hafsteinne@hi.is to let us know that you're joining the coding effort.
 
 ### Tasks to help with
 
